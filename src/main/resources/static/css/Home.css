@@ -362,3 +362,28 @@ p {
     padding-left: 10px;
     margin-right: 100px;
 }
+
+.pagination-controls {
+    display: flex;
+    justify-content: space-between;
+}
+
+.pagination-controls button {
+    background-color: rgb(0,0,0,0.1);
+    border: 1px solid rgb(186, 191, 197);
+    border-radius: 4px;
+    padding: 4px 8px;
+    margin-right: 4px;
+}
+
+.pagination-controls button:hover {
+    background-color: rgb(59, 64, 69);
+    color: white;
+    cursor: pointer;
+}
+
+.pagination-controls button[disabled] {
+    background-color: rgb(231, 112, 13);
+    color: white;
+    cursor: default;
+}
