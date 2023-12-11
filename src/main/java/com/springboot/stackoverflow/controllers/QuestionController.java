@@ -24,11 +24,9 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Base64;
 import java.util.List;
-import java.util.Optional;
 
 @Controller
 public class QuestionController {
@@ -156,10 +154,6 @@ public class QuestionController {
         questionService.votingSystem(vote, type, questionId, answerId);
 
         return "redirect:/viewQuestion/" + questionId;
-    }
-
-    public List<Question> findAllQuestions() {
-        return questionService.findQuestionsList();
     }
 
     @GetMapping("/question/bookmark/{questionId}/add/{add}")

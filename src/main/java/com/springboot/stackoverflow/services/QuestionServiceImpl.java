@@ -9,22 +9,18 @@ import com.google.cloud.storage.StorageOptions;
 import com.springboot.stackoverflow.entity.*;
 import com.springboot.stackoverflow.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
-import javax.swing.text.html.Option;
-import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.nio.file.StandardCopyOption;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -184,6 +180,11 @@ public class QuestionServiceImpl implements QuestionService{
         return questionRepository.findAll();
     }
 
+    @Override
+    public Page<Question> findAllQuestions(int pageNumber, int pageLimit) {
+        return questionRepository.findAll(PageRequest.of(pageNumber, pageLimit));
+    }
+
     public void saveCommentList(Question question) {
         questionRepository.save(question);
     }
@@ -249,8 +250,8 @@ public class QuestionServiceImpl implements QuestionService{
     }
 
     @Override
-    public List<Question> searchProducts(String search) {
-        return questionRepository.searchQuestions(search);
+    public Page<Question> searchProducts(String search, int pageNumber, int pageLimit) {
+        return questionRepository.searchQuestionsPaginated(search, PageRequest.of(pageNumber, pageLimit));
     }
 
     @Override
