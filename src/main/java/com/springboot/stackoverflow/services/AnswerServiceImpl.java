@@ -29,6 +29,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
+import java.util.Date;
 import java.util.Optional;
 
 @Service
@@ -59,6 +60,7 @@ public class AnswerServiceImpl implements AnswerService{
 
             answer.setAuthor(user.getUserName());
             answer.setUser(user);
+            answer.setCreatedAt(new Date());
 
             if(!file.isEmpty()){
                 String fileName = file.getOriginalFilename();

@@ -32,5 +32,10 @@ public interface QuestionService {
     void removeBookmarkQuestion(int questionId);
     void acceptAnswer(Integer questionId, Integer answerId);
 
+
+    List<Question> searchProducts(String search);
+    public List<Object> getSortedCommentsAndAnswers(Integer question_id);
+
     Page<Question> searchProducts(String search, int pageNumber, int pageLimit);
+
 }

@@ -175,4 +175,17 @@ public class QuestionController {
 
         return "redirect:/viewQuestion/" + questionId;
     }
+
+    @GetMapping("/question/{question_id}/activity")
+    public String showQuestionActivity(@PathVariable("question_id") Integer question_id,
+                                       Model model){
+        System.out.println("enter controller");
+        List<Object> list = questionService.getSortedCommentsAndAnswers(question_id);
+        model.addAttribute("list",list);
+        System.out.println("abc" + list);
+
+        System.out.println("exit controller");
+
+        return "questionActivity";
+    }
 }

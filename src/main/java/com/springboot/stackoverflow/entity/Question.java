@@ -79,6 +79,7 @@ public class Question {
     )
     private List<User> savedUsers;
 
+
     public Question(){}
     public Question(String title, String content) {
         this.title = title;
