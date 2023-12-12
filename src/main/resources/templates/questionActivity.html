@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Question Activity</title>
+</head>
+<body>
+    <div th:each="item : ${list}">
+        <div th:if="${item instanceof T(com.springboot.stackoverflow.entity.Comment)}">
+            <!-- Display comment properties -->
+            <p th:text="${item.comment}"></p>
+            <p th:text="${item.updatedAt}"></p>
+        </div>
+        <div th:if="${item instanceof T(com.springboot.stackoverflow.entity.Answer)}">
+            <!-- Display answer properties -->
+            <p th:text="${item.content}"></p>
+            <p th:text="${item.createdAt}"></p>
+        </div>
+    </div>
+
+</body>
+</html>

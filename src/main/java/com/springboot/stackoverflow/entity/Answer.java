@@ -1,8 +1,12 @@
 package com.springboot.stackoverflow.entity;
 
 import jakarta.persistence.*;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -43,6 +47,14 @@ public class Answer {
     @Column(name = "accepted")
     private boolean accepted = false;
 
+    @CreationTimestamp
+    @Column(name = "created_at")
+    private Date createdAt;
+
+    @UpdateTimestamp
+    @Column(name = "updated_at")
+    private Date updatedAt;
+
     public Answer(){}
 
     public Answer(String content, Question question, User user) {
@@ -50,6 +62,23 @@ public class Answer {
         this.question = question;
         this.user = user;
     }
+
+    public Date getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(Date createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public Date getUpdatedAt() {
+        return updatedAt;
+    }
+
+    public void setUpdatedAt(Date updatedAt) {
+        this.updatedAt = updatedAt;
+    }
+
     public Integer getId() {
         return id;
     }

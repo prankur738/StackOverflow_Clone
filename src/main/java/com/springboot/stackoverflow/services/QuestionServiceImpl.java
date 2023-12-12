@@ -25,10 +25,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
+import java.util.*;
 
 @Service
 public class QuestionServiceImpl implements QuestionService{
@@ -374,4 +371,73 @@ public class QuestionServiceImpl implements QuestionService{
             }
         }
     }
+
+//    public List<Object> getSortedCommentsAndAnswers(Integer question_id) {
+//        System.out.println("Enter in func");
+//        List<Object> sortedList = new ArrayList<>();
+//        Question question = questionRepository.findById(question_id).get();
+//
+//        // Add comments to the list
+//        if (question.getComments() != null) {
+//            sortedList.addAll(question.getComments());
+//        }
+//
+//        // Add answers to the list
+//        if (question.getAnswers() != null) {
+//            sortedList.addAll(question.getAnswers());
+//        }
+//
+//        // Sort the list based on createdAt time
+//        Collections.sort(sortedList, Comparator.comparing(item -> {
+//            if (item instanceof Comment) {
+//                return ((Comment) item).getCreatedAt();
+//            } else if (item instanceof Answer) {
+//                return ((Answer) item).getCreatedAt();
+//            }
+//            return null; // Handle other types or return appropriate default
+//        }));
+//        System.out.println("Exiting func");
+//
+//        return sortedList;
+//    }
+
+    public List<Object> getSortedCommentsAndAnswers(Integer question_id) {
+        System.out.println("Enter in func");
+        List<Object> sortedList = new ArrayList<>();
+
+        Optional<Question> optionalQuestion = questionRepository.findById(question_id);
+
+        // Check if the question is present
+        if (optionalQuestion.isPresent()) {
+            Question question = optionalQuestion.get();
+
+            // Add comments to the list
+            if (question.getComments() != null) {
+                sortedList.addAll(question.getComments());
+            }
+
+            // Add answers to the list
+            if (question.getAnswers() != null) {
+                sortedList.addAll(question.getAnswers());
+            }
+
+            // Sort the list based on createdAt time
+            Collections.sort(sortedList, Comparator.comparing(item -> {
+                if (item instanceof Comment) {
+                    return ((Comment) item).getUpdatedAt();
+                } else if (item instanceof Answer) {
+                    return ((Answer) item).getCreatedAt();
+                }
+                return null; // Handle other types or return appropriate default
+            }));
+
+            System.out.println("Exiting func");
+        } else {
+            System.out.println("Question not found for ID: " + question_id);
+        }
+
+        return sortedList;
+    }
+
 }
+

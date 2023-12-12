@@ -30,4 +30,5 @@ public interface QuestionService {
     void acceptAnswer(Integer questionId, Integer answerId);
 
     List<Question> searchProducts(String search);
+    public List<Object> getSortedCommentsAndAnswers(Integer question_id);
 }
