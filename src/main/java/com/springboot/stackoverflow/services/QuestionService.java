@@ -2,6 +2,7 @@ package com.springboot.stackoverflow.services;
 
 import com.springboot.stackoverflow.entity.Question;
 import com.springboot.stackoverflow.entity.Tag;
+import org.springframework.data.domain.Page;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
@@ -21,6 +22,8 @@ public interface QuestionService {
 
     List<Question> findQuestionsList();
 
+    Page<Question> findAllQuestions(int pageNumber, int pageLimit);
+
     void votingSystem(Integer vote, String type, Integer questionId, Integer answerId);
 
     void saveCommentList(Question question);
@@ -29,6 +32,10 @@ public interface QuestionService {
     void removeBookmarkQuestion(int questionId);
     void acceptAnswer(Integer questionId, Integer answerId);
 
+
     List<Question> searchProducts(String search);
     public List<Object> getSortedCommentsAndAnswers(Integer question_id);
+
+    Page<Question> searchProducts(String search, int pageNumber, int pageLimit);
+
 }

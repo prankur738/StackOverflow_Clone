@@ -155,6 +155,24 @@
                         </div>
                     </span>
                 </section>
+                <div th:if="${questionsList.size() != 0}" class="pagination-controls">
+                    <form>
+                        <input type="hidden" name="search" th:value="${search}" />
+                        <input type="hidden" name="pageLimit" th:value="${pageLimit}" />
+                        <button th:if="${pageNumber > 1}" type="submit"
+                                name="pageNumber" th:value="${pageNumber-1}">Prev</button>
+                        <button th:each="i : ${#numbers.sequence(1, totalPages)}"
+                                name="pageNumber" th:value="${i}" th:disabled="${i == pageNumber}">[[${i}]]</button>
+                        <button th:if="${pageNumber < totalPages}" type="submit"
+                                name="pageNumber" th:value="${pageNumber+1}">Next</button>
+                    </form>
+                    <form>
+                        <input type="hidden" name="search" th:value="${search}" />
+                        <button th:each="i : ${#numbers.sequence(5, 15, 5)}"
+                                name="pageLimit" th:value="${i}" th:disabled="${i == pageLimit}">[[${i}]]</button>
+                        per page
+                    </form>
+                </div>
             </main>
         </div>
         <div id="main-container">
