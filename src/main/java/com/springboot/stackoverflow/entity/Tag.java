@@ -19,20 +19,23 @@ public class Tag {
 
     @Column(name = "name")
     private String name;
-    @Column(name = "created_at",updatable = false)
+    @Column(name = "created_at", updatable = false)
     @CreationTimestamp
     private Date createdAt;
     @Column(name = "updated_at")
     @UpdateTimestamp
     private Date modifiedAt;
 
-    @ManyToMany(cascade = {CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH})
-    @JoinTable(name="question_tag",
+    @ManyToMany(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
+    @JoinTable(name = "question_tag",
             joinColumns = @JoinColumn(name = "tag_id"),
             inverseJoinColumns = @JoinColumn(name = "question_id"))
     private List<Question> questions;
 
-    public Tag(){};
+    public Tag() {
+    }
+
+    ;
 
     public Tag(String name) {
         this.name = name;

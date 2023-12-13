@@ -24,12 +24,12 @@ public class TagController {
 
     @GetMapping("/tags")
     public String processAllTags(
-            @RequestParam(value = "page", defaultValue = "1")Integer pageNo,
-            @RequestParam(value = "limit",defaultValue = "8")Integer pageSize,
-            @RequestParam(value = "sortField",defaultValue = "popular")String sortField,
-            @RequestParam(value = "sortDir",defaultValue = "asc")String sortDir,
-            @RequestParam(value = "search",required = false)String search,
-            Model model){
+            @RequestParam(value = "page", defaultValue = "1") Integer pageNo,
+            @RequestParam(value = "limit", defaultValue = "8") Integer pageSize,
+            @RequestParam(value = "sortField", defaultValue = "popular") String sortField,
+            @RequestParam(value = "sortDir", defaultValue = "asc") String sortDir,
+            @RequestParam(value = "search", required = false) String search,
+            Model model) {
         Page<Tag> page = tagService.customTags(pageNo, pageSize, sortField, sortDir, search);
 
         List<Tag> tags = page.getContent();
@@ -41,7 +41,7 @@ public class TagController {
         model.addAttribute("sortDir", sortDir);
         model.addAttribute("reverseSortDir", sortDir.equals("asc") ? "desc" : "asc");
 
-        model.addAttribute("search",search);
+        model.addAttribute("search", search);
 
         model.addAttribute("tags", tags);
 
@@ -49,9 +49,9 @@ public class TagController {
     }
 
     @GetMapping("/questions/tagged/{tagId}")
-    public String processAllQuestions(@PathVariable(name = "tagId")int tagId,Model model){
+    public String processAllQuestions(@PathVariable(name = "tagId") int tagId, Model model) {
         List<Question> tempQuestions = tagService.findAllQuestionsByTag(tagId);
-        model.addAttribute("questions",tempQuestions);
+        model.addAttribute("questions", tempQuestions);
         return "QuestionsTagged";
     }
 

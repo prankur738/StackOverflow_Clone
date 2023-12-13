@@ -19,7 +19,8 @@ public class Vote {
     @Column(name = "direction")
     private Integer direction = 0;
 
-    public Vote() {}
+    public Vote() {
+    }
 
     public Vote(Integer answerId, Integer questionId, Integer direction) {
         this.answerId = answerId;

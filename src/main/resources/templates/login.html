@@ -5,28 +5,30 @@
     <link rel="stylesheet" th:href="@{css/login.css}">
 </head>
 <body>
-    <div class="login-container">
-        <div class = "logo">
-            <svg aria-hidden="true" class="native svg-icon iconLogoGlyphMd" width="32" height="37" viewBox="0 0 32 37">
-                <path d="M26 33v-9h4v13H0V24h4v9h22Z" fill="#BCBBBB"></path><path d="m21.5 0-2.7 2 9.9 13.3 2.7-2L21.5
+<div class="login-container">
+    <div class="logo">
+        <svg aria-hidden="true" class="native svg-icon iconLogoGlyphMd" width="32" height="37" viewBox="0 0 32 37">
+            <path d="M26 33v-9h4v13H0V24h4v9h22Z" fill="#BCBBBB"></path>
+            <path d="m21.5 0-2.7 2 9.9 13.3 2.7-2L21.5
                 0ZM26 18.4 13.3 7.8l2.1-2.5 12.7 10.6-2.1 2.5ZM9.1 15.2l15 7 1.4-3-15-7-1.4 3Zm14 10.79.68-2.95-16.1-3.35L7
-                23l16.1 2.99ZM23 30H7v-3h16v3Z" fill="#F48024"></path><span class="title">Stack<b>overflow</b></span>
-            </svg>
-        </div>
-        <h2>Login to Your Account</h2>
-        <form th:action="@{/authenticateTheUser}" method="post">
-            <span class = "error" th:if="${param.error}">Invalid Credentials!</span>
-            <span class = "success" th:if="${param.success}">User registered Successfully!</span>
-
-            <label for="username">Email:</label>
-            <input type="text" id="username" name="username" required>
-
-            <label for="password">Password:</label>
-            <input type="password" id="password" name="password" required>
-
-            <button type="submit">Login</button>
-        </form>
-        <p>Don't have an account? <a th:href="@{/signup}">Sign up here</a></p>
+                23l16.1 2.99ZM23 30H7v-3h16v3Z" fill="#F48024"></path>
+            <span class="title">Stack<b>overflow</b></span>
+        </svg>
     </div>
+    <h2>Login to Your Account</h2>
+    <form th:action="@{/authenticateTheUser}" method="post">
+        <span class="error" th:if="${param.error}">Invalid Credentials!</span>
+        <span class="success" th:if="${param.success}">User registered Successfully!</span>
+
+        <label for="username">Email:</label>
+        <input type="text" id="username" name="username" required>
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required>
+
+        <button type="submit">Login</button>
+    </form>
+    <p>Don't have an account? <a th:href="@{/signup}">Sign up here</a></p>
+</div>
 </body>
 </html>

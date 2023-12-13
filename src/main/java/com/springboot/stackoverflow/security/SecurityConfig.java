@@ -1,4 +1,5 @@
 package com.springboot.stackoverflow.security;
+
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -8,6 +9,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.provisioning.JdbcUserDetailsManager;
 import org.springframework.security.provisioning.UserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
+
 import javax.sql.DataSource;
 
 @Configuration
@@ -16,6 +18,7 @@ public class SecurityConfig {
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
+
     @Bean
     public UserDetailsManager userDetailsManager(DataSource dataSource) {
         JdbcUserDetailsManager jdbcUserDetailsManager = new JdbcUserDetailsManager(dataSource);
@@ -31,9 +34,10 @@ public class SecurityConfig {
         );
         return jdbcUserDetailsManager;
     }
+
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-        http.authorizeHttpRequests(config->
+        http.authorizeHttpRequests(config ->
                         config
                                 .requestMatchers("/css/**", "/login**", "/signup**", "/"
                                         , "/processUser**").permitAll()
@@ -41,14 +45,14 @@ public class SecurityConfig {
                                 .requestMatchers("/**").hasAnyRole("user", "admin")
                                 .anyRequest().authenticated()
                 )
-                .formLogin(form->
+                .formLogin(form ->
                         form
                                 .loginPage("/login")
                                 .loginProcessingUrl("/authenticateTheUser")
                                 .successForwardUrl("/")
                                 .permitAll()
                 )
-                .logout(logout->
+                .logout(logout ->
                         logout
                                 .permitAll());
         return http.build();

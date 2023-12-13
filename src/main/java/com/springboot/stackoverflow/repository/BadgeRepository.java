@@ -7,6 +7,6 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface BadgeRepository extends JpaRepository<Badge,Integer> {
+public interface BadgeRepository extends JpaRepository<Badge, Integer> {
     List<Badge> findByReputationRequiredLessThanEqual(Integer reputation);
 }

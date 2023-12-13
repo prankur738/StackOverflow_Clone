@@ -1,4 +1,5 @@
 package com.springboot.stackoverflow.entity;
+
 import jakarta.persistence.*;
 
 import java.util.List;
@@ -19,7 +20,8 @@ public class Role {
     @Column(name = "role")
     private String role;
 
-    public Role() {}
+    public Role() {
+    }
 
     public Role(String role) {
         this.role = role;

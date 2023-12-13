@@ -8,24 +8,25 @@ import java.util.List;
 
 @Entity
 @Table(name = "badges")
-public class Badge{
+public class Badge {
+    @Column(name = "reputationRequired")
+    int reputationRequired;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Integer id;
-    @Column(name="name")
+    @Column(name = "name")
     private String name;
-    @Column(name="description")
+    @Column(name = "description")
     private String description;
-    @Column(name = "reputationRequired")
-    int reputationRequired;
     @ManyToMany
     @JoinTable(name = "user_badge", joinColumns = @JoinColumn(name = "badge_id"),
-            inverseJoinColumns =@JoinColumn(name ="user_id"))
+            inverseJoinColumns = @JoinColumn(name = "user_id"))
     private List<User> userBadge;
 
     public Badge() {
     }
+
     public Badge(String name, String description) {
         this.name = name;
         this.description = description;
@@ -42,18 +43,23 @@ public class Badge{
     public Integer getId() {
         return id;
     }
+
     public void setId(Integer id) {
         this.id = id;
     }
+
     public String getName() {
         return name;
     }
+
     public void setName(String name) {
         this.name = name;
     }
+
     public String getDescription() {
         return description;
     }
+
     public void setDescription(String description) {
         this.description = description;
     }
@@ -67,7 +73,7 @@ public class Badge{
     }
 
     public void addUsers(User theUser) {
-        if(userBadge == null) {
+        if (userBadge == null) {
             userBadge = new ArrayList<>();
         }
 

@@ -36,25 +36,25 @@ public class QuestionController {
     UserService userService;
 
     @Autowired
-    public QuestionController(QuestionService questionService,UserService userService){
+    public QuestionController(QuestionService questionService, UserService userService) {
         this.questionService = questionService;
         this.userService = userService;
     }
 
     @GetMapping("/questions/ask")
-    public String processAskQuestions(Model model){
+    public String processAskQuestions(Model model) {
         Question question = new Question();
         Tag tag = new Tag();
-        model.addAttribute("question",question);
-        model.addAttribute("tag",tag);
+        model.addAttribute("question", question);
+        model.addAttribute("tag", tag);
         return "AskQuestion";
     }
 
     @PostMapping("/saveQuestion")
     public String processSaveQuestion(@RequestParam("imageName") MultipartFile file,
                                       @ModelAttribute("question") Question newQuestion,
-                                      @ModelAttribute("tag")Tag newTag) throws IOException {
-        questionService.saveQuestion(newQuestion,newTag,file);
+                                      @ModelAttribute("tag") Tag newTag) throws IOException {
+        questionService.saveQuestion(newQuestion, newTag, file);
 
         return "redirect:/";
     }
@@ -64,8 +64,8 @@ public class QuestionController {
         Question question = questionService.findQuestionById(questionId);
         List<Answer> answers = question.getAnswers();
 
-        for(Answer answer : answers){
-            if(answer.getPhotoName() != null) {
+        for (Answer answer : answers) {
+            if (answer.getPhotoName() != null) {
                 String fileName = answer.getPhotoName();
                 // Download file from Firebase Storage
                 Credentials credentials = GoogleCredentials.fromStream(new FileInputStream("./serviceAccountKey.json"));
@@ -81,7 +81,7 @@ public class QuestionController {
         }
 
 
-        if(question.getPhotoName() != null) {
+        if (question.getPhotoName() != null) {
             String fileName = question.getPhotoName();
             // Download file from Firebase Storage
             Credentials credentials = GoogleCredentials.fromStream(new FileInputStream("./serviceAccountKey.json"));
@@ -96,8 +96,8 @@ public class QuestionController {
 
         }
 
-        model.addAttribute("question",question);
-        if(question == null) return "error";
+        model.addAttribute("question", question);
+        if (question == null) return "error";
         Parser parser = Parser.builder().build();
         HtmlRenderer renderer = HtmlRenderer.builder().build();
         String convertedHtml = renderer.render(parser.parse(question.getContent()));
@@ -107,19 +107,19 @@ public class QuestionController {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         User user = userService.findByEmail(authentication.getName());
         List<Question> questionList = user.getSavedQuestions();
-        for(Question tempQuestion : questionList){
-            if(tempQuestion.getId() == questionId){
+        for (Question tempQuestion : questionList) {
+            if (tempQuestion.getId() == questionId) {
                 add = "false";
                 break;
             }
         }
-        model.addAttribute("add",add);
+        model.addAttribute("add", add);
 
         return "questionPage";
     }
 
     @GetMapping("/editQuestion/{questionId}")
-    public String processEditQuestion(@PathVariable("questionId")Integer questionId,Model model){
+    public String processEditQuestion(@PathVariable("questionId") Integer questionId, Model model) {
         Question question = questionService.editQuestion(questionId);
         model.addAttribute("question", question);
         model.addAttribute("isEdited", "true");
@@ -129,14 +129,14 @@ public class QuestionController {
 
     @GetMapping("/updateQuestion/{questionId}")
     public String processUpdatedQuestion(@PathVariable("questionId") Integer questionId,
-                                         @ModelAttribute("editedContent") String editedContent){
+                                         @ModelAttribute("editedContent") String editedContent) {
         questionService.updateQuestion(questionId, editedContent);
 
         return "redirect:/viewQuestion/{questionId}";
     }
 
     @GetMapping("/deleteQuestion/{questionId}")
-    public String deleteQuestion(@PathVariable("questionId")Integer questionId){
+    public String deleteQuestion(@PathVariable("questionId") Integer questionId) {
         questionService.deleteQuestion(questionId);
 
         return "redirect:/";
@@ -158,11 +158,10 @@ public class QuestionController {
 
     @GetMapping("/question/bookmark/{questionId}/add/{add}")
     public String processBookmarkQuestion(@PathVariable(value = "questionId") Integer questionId,
-                                          @PathVariable(value = "add")String add){
-        if(add.equals("true")){
+                                          @PathVariable(value = "add") String add) {
+        if (add.equals("true")) {
             questionService.bookmarkQuestion(questionId);
-        }
-        else{
+        } else {
             questionService.removeBookmarkQuestion(questionId);
         }
         return "redirect:/viewQuestion/{questionId}";
@@ -178,10 +177,10 @@ public class QuestionController {
 
     @GetMapping("/question/{question_id}/activity")
     public String showQuestionActivity(@PathVariable("question_id") Integer question_id,
-                                       Model model){
+                                       Model model) {
         System.out.println("enter controller");
         List<Object> list = questionService.getSortedCommentsAndAnswers(question_id);
-        model.addAttribute("list",list);
+        model.addAttribute("list", list);
         System.out.println("abc" + list);
 
         System.out.println("exit controller");

@@ -5,537 +5,547 @@
     <link rel="stylesheet" th:href="@{/css/questionPage.css}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
           integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
-          crossorigin="anonymous" referrerpolicy="no-referrer" />
+          crossorigin="anonymous" referrerpolicy="no-referrer"/>
 </head>
 <body>
-    <nav id="navbar">
-        <a th:href="@{/}" class = "logo">
+<nav id="navbar">
+    <a th:href="@{/}" class="logo">
         <svg aria-hidden="true" class="native svg-icon iconLogoGlyphMd" width="32" height="37" viewBox="0 0 32 37">
-            <path d="M26 33v-9h4v13H0V24h4v9h22Z" fill="#BCBBBB"></path><path d="m21.5 0-2.7 2 9.9 13.3 2.7-2L21.5
+            <path d="M26 33v-9h4v13H0V24h4v9h22Z" fill="#BCBBBB"></path>
+            <path d="m21.5 0-2.7 2 9.9 13.3 2.7-2L21.5
                     0ZM26 18.4 13.3 7.8l2.1-2.5 12.7 10.6-2.1 2.5ZM9.1 15.2l15 7 1.4-3-15-7-1.4 3Zm14
                     10.79.68-2.95-16.1-3.35L7
-                    23l16.1 2.99ZM23 30H7v-3h16v3Z" fill="#F48024"></path><span class="title">
+                    23l16.1 2.99ZM23 30H7v-3h16v3Z" fill="#F48024"></path>
+            <span class="title">
                     Stack<b>overflow</b>
                 </span>
-            </svg>
-        </a>
-        <div class="search">
-            <form th:action="@{/}">
-                <input type="search" th:name="search" id="search_bar" placeholder="Search...">
-                <button class="fa-solid fa-magnifying-glass search_icon icons" type="submit">
-                </button>
-            </form>
-        </div>
-        <span class="profile">
+        </svg>
+    </a>
+    <div class="search">
+        <form th:action="@{/}">
+            <input type="search" th:name="search" id="search_bar" placeholder="Search...">
+            <button class="fa-solid fa-magnifying-glass search_icon icons" type="submit">
+            </button>
+        </form>
+    </div>
+    <span class="profile">
                 <img src="" alt="" id="user_pic">
             </span>
-        <ul class="items">
-            <li>
-                <a th:href="@{/userProfile}">
-                    <svg xmlns="http://www.w3.org/2000/svg" height="19" width="17" viewBox="0 0 448 512">
-                        <path d="M224 256A128 128 0 1 0 224 0a128 128 0 1 0 0 256zm-45.7 48C79.8 304 0 383.8 0 482.3C0 498.7 13.3 512 29.7 512H418.3c16.4 0 29.7-13.3 29.7-29.7C448 383.8 368.2 304 269.7 304H178.3z"/>
-                    </svg>
-                </a>
-            </li>
-            <li>
-                <a th:href="@{/achievement}">
-                    <svg aria-hidden="true" class="svg-icon iconAchievements" width="21" height="21" viewBox="0 0 18 18">
-                        <path d="M15 2V1H3v1H0v4c0 1.6 1.4 3 3 3v1c.4 1.5 3 2.6 5 3v2H5s-1 1.5-1 2h10c0-.4-1-2-1-2h-3v-2c2-.4 4.6-1.5 5-3V9c1.6-.2 3-1.4 3-3V2h-3ZM3 7c-.5 0-1-.5-1-1V4h1v3Zm8.4 2.5L9 8 6.6 9.4l1-2.7L5 5h3l1-2.7L10 5h2.8l-2.3 1.8 1 2.7h-.1ZM16 6c0 .5-.5 1-1 1V4h1v2Z"></path>
-                    </svg>
-                </a>
-            </li>
-            <li><a th:href="@{/aboutUs}"><i class="fa-solid fa-circle-question icons"></i></a></li>
-        </ul>
-        <span id = "login-logout">
+    <ul class="items">
+        <li>
+            <a th:href="@{/userProfile}">
+                <svg xmlns="http://www.w3.org/2000/svg" height="19" width="17" viewBox="0 0 448 512">
+                    <path d="M224 256A128 128 0 1 0 224 0a128 128 0 1 0 0 256zm-45.7 48C79.8 304 0 383.8 0 482.3C0 498.7 13.3 512 29.7 512H418.3c16.4 0 29.7-13.3 29.7-29.7C448 383.8 368.2 304 269.7 304H178.3z"/>
+                </svg>
+            </a>
+        </li>
+        <li>
+            <a th:href="@{/achievement}">
+                <svg aria-hidden="true" class="svg-icon iconAchievements" width="21" height="21" viewBox="0 0 18 18">
+                    <path d="M15 2V1H3v1H0v4c0 1.6 1.4 3 3 3v1c.4 1.5 3 2.6 5 3v2H5s-1 1.5-1 2h10c0-.4-1-2-1-2h-3v-2c2-.4 4.6-1.5 5-3V9c1.6-.2 3-1.4 3-3V2h-3ZM3 7c-.5 0-1-.5-1-1V4h1v3Zm8.4 2.5L9 8 6.6 9.4l1-2.7L5 5h3l1-2.7L10 5h2.8l-2.3 1.8 1 2.7h-.1ZM16 6c0 .5-.5 1-1 1V4h1v2Z"></path>
+                </svg>
+            </a>
+        </li>
+        <li><a th:href="@{/aboutUs}"><i class="fa-solid fa-circle-question icons"></i></a></li>
+    </ul>
+    <span id="login-logout">
             <th:block th:unless="${#authorization.expression('isAuthenticated()')}">
             <a th:href="@{/login}">Login</a>
             <a th:href="@{/signup}">signup</a>
             </th:block>
             <th:block th:if="${#authorization.expression('isAuthenticated()')}">
-                <form method="post" th:action = "@{/logout}">
+                <form method="post" th:action="@{/logout}">
                     <input id="logout" type="submit" value="Logout">
                 </form>
             </th:block>
         </span>
-    </nav>
+</nav>
 
-    <div id = "parent">
-        <div id = "sidebar-container">
-            <div id="sidebar">
-                <div class="row">
-                    <a href="/" >
-                        <i class="fa-solid fa-house side_icons"></i>
-                        <small class="side-text">Home</small>
-                    </a>
-                </div>
-
-                <div class="row">
-                    <a href="/questions/ask" >
-                        <i class="fa-solid fa-circle-question side_icons"></i>
-                        <small class="side-text">Ask Question</small>
-                    </a>
-                </div>
-
-                <div class="row active-bar">
-                    <a href="#" >
-                        <i class="fa-solid fa-circle-question side_icons"></i>
-                        <small class="side-text">Questions</small>
-                    </a>
-                </div>
-
-                <div class="row">
-                    <a href="/tags" >
-                        <i class="fa-solid fa-tag side_icons"></i>
-                        <small class="side-text">Tags</small>
-                    </a>
-                </div>
-                <br><br>
-                <div class="row">
-                    <a href="/users/saves">
-                        <i class="fa-solid fa-bookmark side_icons"></i>
-                        <small class="side-text">Saves</small>
-                    </a>
-                </div>
-                <div class="row">
-                    <a href="/users">
-                        <i class="fa-solid fa-user side_icons"></i>
-                        <small class="side-text">Users</small>
-                    </a>
-                </div>
-                <br>
+<div id="parent">
+    <div id="sidebar-container">
+        <div id="sidebar">
+            <div class="row">
+                <a href="/">
+                    <i class="fa-solid fa-house side_icons"></i>
+                    <small class="side-text">Home</small>
+                </a>
             </div>
-        </div>
 
-        <div id = "body">
-            <div id = "main-question">
-                <div id = "question">
-                    <h1 th:text = "${question.title}"></h1>
-                    <a class="author_box" th:href="@{'/userProfile?userId='+ ${question.user.id}}"
-                       style="color: black; padding-top: 5px;">
-                        <i class="fa-solid fa-pen-clip"></i>
-                        <span class="author_view" th:text="${question.author}"></span>
-                    </a>
-                    <form th:action = "@{/questions/ask}">
-                        <input type="submit" value="Ask Question">
-                    </form>
-                </div>
-                <div id = "view-detail">
-                    Asked: <b><span th:text = "${#dates.format(question.createdAt, 'dd/MM/YYYY')}"
-                                    style="margin-right:0.5rem;"></span></b>
-                    Modified: <b><span th:text = "${#dates.format(question.modifiedAt, 'dd/MM/YYYY')}"
-                                       style="margin-right:0.5rem;"></span></b>
-                    Views: <b><span th:text = "${question.views}" style="margin-right:0.5rem;"></span></b>
-                    <span th:if = "${isEdited==null && editAnswer == null && addComment == null
+            <div class="row">
+                <a href="/questions/ask">
+                    <i class="fa-solid fa-circle-question side_icons"></i>
+                    <small class="side-text">Ask Question</small>
+                </a>
+            </div>
+
+            <div class="row active-bar">
+                <a href="#">
+                    <i class="fa-solid fa-circle-question side_icons"></i>
+                    <small class="side-text">Questions</small>
+                </a>
+            </div>
+
+            <div class="row">
+                <a href="/tags">
+                    <i class="fa-solid fa-tag side_icons"></i>
+                    <small class="side-text">Tags</small>
+                </a>
+            </div>
+            <br><br>
+            <div class="row">
+                <a href="/users/saves">
+                    <i class="fa-solid fa-bookmark side_icons"></i>
+                    <small class="side-text">Saves</small>
+                </a>
+            </div>
+            <div class="row">
+                <a href="/users">
+                    <i class="fa-solid fa-user side_icons"></i>
+                    <small class="side-text">Users</small>
+                </a>
+            </div>
+            <br>
+        </div>
+    </div>
+
+    <div id="body">
+        <div id="main-question">
+            <div id="question">
+                <h1 th:text="${question.title}"></h1>
+                <a class="author_box" th:href="@{'/userProfile?userId='+ ${question.user.id}}"
+                   style="color: black; padding-top: 5px;">
+                    <i class="fa-solid fa-pen-clip"></i>
+                    <span class="author_view" th:text="${question.author}"></span>
+                </a>
+                <form th:action="@{/questions/ask}">
+                    <input type="submit" value="Ask Question">
+                </form>
+            </div>
+            <div id="view-detail">
+                Asked: <b><span th:text="${#dates.format(question.createdAt, 'dd/MM/YYYY')}"
+                                style="margin-right:0.5rem;"></span></b>
+                Modified: <b><span th:text="${#dates.format(question.modifiedAt, 'dd/MM/YYYY')}"
+                                   style="margin-right:0.5rem;"></span></b>
+                Views: <b><span th:text="${question.views}" style="margin-right:0.5rem;"></span></b>
+                <span th:if="${isEdited==null && editAnswer == null && addComment == null
                                     && editComment == null && addAnswerComment == null &&
                                     editAnswerComment == null}">
-                        <a  th:unless="${add}"  th:href="@{'/question/bookmark/' + ${question.id} +'/add/' + ${add}}"
-                            class="bookmark"><i class="fa-solid fa-bookmark bookmark-icon"></i></a>
-                         <a  th:if="${add}"    th:href="@{'/question/bookmark/' + ${question.id} +'/add/' + ${add}}"
-                             class="bookmark"><i class="fa-regular fa-bookmark bookmark-icon"></i></a>
+                        <a th:unless="${add}" th:href="@{'/question/bookmark/' + ${question.id} +'/add/' + ${add}}"
+                           class="bookmark"><i class="fa-solid fa-bookmark bookmark-icon"></i></a>
+                         <a th:if="${add}" th:href="@{'/question/bookmark/' + ${question.id} +'/add/' + ${add}}"
+                            class="bookmark"><i class="fa-regular fa-bookmark bookmark-icon"></i></a>
                     </span>
-                </div>
             </div>
-            <div class = "question-detail">
-                <div class = "voting" th:if = "${isEdited != null}"></div>
-                <div class = "voting" th:unless = "${isEdited != null}">
-                    <th:block th:unless="${#authentication.principal.username eq question.user.email}">
-                        <a th:href="@{'/processVote?vote=1&type=question&questionId=' + ${question.id}}">
-                            <span class = "voting-button">
+        </div>
+        <div class="question-detail">
+            <div class="voting" th:if="${isEdited != null}"></div>
+            <div class="voting" th:unless="${isEdited != null}">
+                <th:block th:unless="${#authentication.principal.username eq question.user.email}">
+                    <a th:href="@{'/processVote?vote=1&type=question&questionId=' + ${question.id}}">
+                            <span class="voting-button">
                                 <i class="fa-solid fa-caret-up"></i>
                             </span>
-                        </a>
-                    </th:block>
-                        <span th:text = "${question.votes}" class = "voting-count"></span>
-                    <span>Votes</span>
-                    <th:block th:unless="${#authentication.principal.username eq question.user.email}">
-                        <a th:href="@{'/processVote?vote=-1&type=question&questionId=' + ${question.id}}">
-                            <span class = "voting-button">
+                    </a>
+                </th:block>
+                <span th:text="${question.votes}" class="voting-count"></span>
+                <span>Votes</span>
+                <th:block th:unless="${#authentication.principal.username eq question.user.email}">
+                    <a th:href="@{'/processVote?vote=-1&type=question&questionId=' + ${question.id}}">
+                            <span class="voting-button">
                                 <i class="fa-solid fa-caret-down"></i>
                             </span>
-                        </a>
-                    </th:block>
-                </div>
+                    </a>
+                </th:block>
+            </div>
 
-                <div th:if = "${isEdited != null}">
-                    <div class = "content-body">
-                        <div class = "question-content">
-                            <form th:action = "@{/updateQuestion/{questionId}
+            <div th:if="${isEdited != null}">
+                <div class="content-body">
+                    <div class="question-content">
+                        <form th:action="@{/updateQuestion/{questionId}
                             (questionId = ${question.id})}" method="GET">
                                 <textarea th:text="${question.content}" name="editedContent"
-                                          th:value = "${question.content}" rows="10"
+                                          th:value="${question.content}" rows="10"
                                           style="width: 90%; margin-left: 5%;"></textarea> <br> <br>
-                                <img th:if="${question.photoName != null}" th:src="'data:' + ${question.photoType} + ';base64,'
+                            <img th:if="${question.photoName != null}" th:src="'data:' + ${question.photoType} + ';base64,'
                                  + ${question.photo}"
-                                     height="200px" width="200px" class="show_img">
-                                <br>
-                                <input type="submit" value="Update">
-                            </form>
-                            <span th:each="tag : ${question.tags}">
+                                 height="200px" width="200px" class="show_img">
+                            <br>
+                            <input type="submit" value="Update">
+                        </form>
+                        <span th:each="tag : ${question.tags}">
                             <a th:text="${tag.name}" class="tags"
                                th:href="@{/questions/tagged/{tagId}(tagId=${tag.id})}">
                             </a>
                                 </span>
-                        </div><br><br>
                     </div>
+                    <br><br>
                 </div>
+            </div>
 
-                <div th:unless = "${isEdited != null}">
-                    <div class = "content-body">
-                        <div class = "question-content">
-                            <div th:utext = "${question.content}"></div>
-                            <img th:if="${question.photo} != null" th:src="'data:' + ${question.photoType} + ';base64,'
+            <div th:unless="${isEdited != null}">
+                <div class="content-body">
+                    <div class="question-content">
+                        <div th:utext="${question.content}"></div>
+                        <img th:if="${question.photo} != null" th:src="'data:' + ${question.photoType} + ';base64,'
                             + ${question.photo}" alt="Photo" height="400px" width="400px" class="show_img">
-                            <br>
-                            <span th:each = "tag : ${question.tags}" th:text = "*{tag.name}" class = "tags"></span>
-                        </div><br><br>
+                        <br>
+                        <span th:each="tag : ${question.tags}" th:text="*{tag.name}" class="tags"></span>
+                    </div>
+                    <br><br>
 
-                        <th:block th:if="${#authentication.principal.username eq question.user.email}">
-                        <a th:href = "@{/editQuestion/{questionId} (questionId = ${question.id})}"
-                           class = "answer-action">
+                    <th:block th:if="${#authentication.principal.username eq question.user.email}">
+                        <a th:href="@{/editQuestion/{questionId} (questionId = ${question.id})}"
+                           class="answer-action">
                             Edit
                         </a>
 
-                        <a th:href = "@{/deleteQuestion/{questionId} (questionId = ${question.id})}"
-                           class = "answer-action">
+                        <a th:href="@{/deleteQuestion/{questionId} (questionId = ${question.id})}"
+                           class="answer-action">
                             Delete
                         </a>
-                        </th:block>
-                        <a th:unless="${addComment != null}" th:href="@{/addComment/{questionId}
+                    </th:block>
+                    <a th:unless="${addComment != null}" th:href="@{/addComment/{questionId}
                         (questionId = ${question.id})}"
-                           class = "answer-action">comment</a>
-                        <form th:if="${addComment != null}" th:action = "@{/saveComment}" method="Post">
-                            Comment:
-                            <textarea name="saveContent"
-                                      th:field = "${comments.comment}" rows="10"
-                                      style="width: 90%; margin-left: 5%;" required></textarea>
+                       class="answer-action">comment</a>
+                    <form th:if="${addComment != null}" th:action="@{/saveComment}" method="Post">
+                        Comment:
+                        <textarea name="saveContent"
+                                  th:field="${comments.comment}" rows="10"
+                                  style="width: 90%; margin-left: 5%;" required></textarea>
+                        <input type="hidden" th:name="questionId" th:value="${question.id}">
+                        <br>
+                        <input type="submit" value="Comment">
+                    </form>
+                    <br><br>
+
+                    <div th:if="${comments != null and comments.user != null}" th:each=
+                            "comments : ${question.comments}" class="comment">
+
+                        <span th:text="*{comments.user.userName}+' : '"></span><br>
+
+                        <th:block th:unless="${editComment != null and editComment eq comments.id}">
+                            <div th:utext="*{comments.comment}"></div>
+                            <br>
+                            <th:block th:if="${#authentication.principal.username eq comments.email}">
+                                <a th:href="@{/editComment/{commentId} (commentId = ${comments.id})}"
+                                   class="answer-action">
+                                    Edit
+                                </a>
+                                <a th:href="@{/deleteComment/{commentId} (commentId = ${comments.id})}"
+                                   class="answer-action">
+                                    Delete
+                                </a><br>
+                            </th:block>
+                        </th:block>
+
+                        <form th:if="${editComment != null and editComment eq comments.id}" th:action=
+                                "@{/updateComment/{commentId} (commentId = ${comments.id})}" method="Post">
+                                <textarea name="updateContent"
+                                          th:field="${comments.comment}" rows="10"
+                                          style="width: 90%; margin-left: 5%;" required></textarea>
                             <input type="hidden" th:name="questionId" th:value="${question.id}">
                             <br>
-                            <input type="submit" value="Comment">
+                            <input type="submit" value="Edit">
                         </form>
-                        <br><br>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr>
 
-                        <div th:if="${comments != null and comments.user != null}" th:each =
-                                "comments : ${question.comments}" class="comment">
+        <div>
+            <span th:text="${question.answers.size()}"></span>Answer
 
-                            <span th:text = "*{comments.user.userName}+' : '"  ></span><br>
+            <div th:each="answer: ${question.answers}" th:unless="${answer != question.acceptedAnswer}">
+                <div th:if="${editAnswer != null && answer.id == editAnswer.id}">
+                    <div class="question-detail">
+                        <div class="voting">
+                        </div>
 
-                            <th:block th:unless="${editComment != null and editComment eq comments.id}">
-                                <div th:utext = "*{comments.comment}"  ></div><br>
-                                <th:block th:if="${#authentication.principal.username eq comments.email}">
-                                    <a  th:href = "@{/editComment/{commentId} (commentId = ${comments.id})}"
-                                       class = "answer-action">
+                        <form th:action="@{/updateAnswer/{questionId}/{answerId}
+                             (questionId = ${question.id}, answerId = ${question.acceptedAnswer.id})}" method="GET">
+                                <textarea th:utext="${question.acceptedAnswer.content}" name="editedContent"
+                                          th:value="${question.acceptedAnswer.content}" rows="10"
+                                          style="width: 90%; margin-left: 5%;"></textarea>
+                            <br>
+                            <input type="file" name="imageName" accept="image/**" class="add_image">
+                            <input type="submit" value="Update">
+                        </form>
+                    </div>
+                </div>
+
+                <div th:unless="${editAnswer != null && question.acceptedAnswer.id == editAnswer.id}">
+                    <div class="question-detail">
+                        <div class="voting">
+                            <th:block th:unless="${#authentication.principal.username eq answer.user.email}">
+                                <a th:href="@{'/processVote?vote=1&type=answer&questionId=' + ${question.id} +
+                                '&answerId=' + ${question.acceptedAnswer.id}}">
+                                    <span class="voting-button">
+                                        <i class="fa-solid fa-caret-up"></i>
+                                    </span>
+                                </a>
+                            </th:block>
+                            <span th:text="${question.acceptedAnswer.votes}" class="voting-count"></span>
+                            <span>Votes</span>
+                            <th:block th:unless="${#authentication.principal.username eq answer.user.email}">
+                                <a th:href="@{'/processVote?vote=-1&type=answer&questionId=' + ${question.id} +
+                                '&answerId=' + ${question.acceptedAnswer.id}}">
+                                    <span class="voting-button">
+                                        <i class="fa-solid fa-caret-down"></i>
+                                    </span>
+                                </a>
+                            </th:block>
+                            <a th:href="@{'/acceptAnswer?questionId=' + ${question.id} +
+                                '&answerId=' + ${question.acceptedAnswer.id}}" class="accepted-answer">
+                                <i class="fa-solid fa-circle-check"></i>
+                            </a>
+                        </div>
+
+                        <div class="content-body">
+                            <div class="answer-content">
+                                <a class="author_box answer-author" th:href="@{'/userProfile?userId='+
+                                    ${question.acceptedAnswer.user.id}}"
+                                   style="color: black; padding-top: 5px;">
+                                    <i class="fa-solid fa-pen-clip"></i>
+                                    <span class="author_view" th:text="${question.acceptedAnswer.author}"></span>
+                                </a>
+                                <pre th:utext="${question.acceptedAnswer.content}">
+                                    </pre>
+                            </div>
+                            <br><br>
+                            <img th:if="${question.acceptedAnswer.photo != null}" th:src="'data:' + ${question.acceptedAnswer.photoType} + ';base64,'
+                                 + ${question.acceptedAnswer.photo}"
+                                 height="200px" width="200px" class="show_img">
+
+                            <th:block
+                                    th:if="${#authentication.principal.username eq question.acceptedAnswer.user.email}">
+                                <a th:href="@{/editAnswer/{questionId}/{answerId} (questionId = ${question.id},
+                                answerId = ${question.acceptedAnswer.id})}" class="answer-action">
+                                    Edit
+                                </a>
+
+                                <a th:href="@{/deleteAnswer/{questionId}/{answerId} (questionId = ${question.id},
+                                answerId = ${question.acceptedAnswer.id})}" class="answer-action">
+                                    Delete
+                                </a>
+                            </th:block>
+
+                            <a th:unless="${addAnswerComment != null and
+                                addAnswerComment eq question.acceptedAnswer.id}"
+                               th:href="@{/addAnswerComment/{questionId}/{answerID}
+                                   (questionId = ${question.id},answerID=${question.acceptedAnswer.id})}"
+                               class="answer-action">comment</a>
+                            <form th:if="${addAnswerComment != null and addAnswerComment eq question.acceptedAnswer.id}"
+                                  th:action="@{/saveAnswerComment}" method="Post">
+                                Comment:
+                                <textarea name="saveContent"
+                                          th:field="${comments.comment}" rows="10"
+                                          style="width: 90%; margin-left: 5%;"
+                                          required></textarea>
+                                <input type="hidden" th:name="questionId" th:value="${question.id}">
+                                <input type="hidden" th:name="answerId" th:value="${question.acceptedAnswer.id}">
+                                <br>
+                                <input type="submit" value="Comment">
+                            </form>
+
+                            <br><br>
+                            <div th:each="comments : ${question.acceptedAnswer.comment}" class="comment">
+                                <span th:text="*{comments.user.userName}"></span> :<br>
+                                <div th:utext="*{comments.comment}"></div>
+                                <br>
+
+                                <th:block th:if="${#authentication.principal.username eq comments.user.email}">
+                                    <a th:unless="${editAnswerComment != null and editAnswerComment eq comments.id}"
+                                       th:href="@{/editAnswerComment/{commentId}/{questionId}
+                                            (commentId = ${comments.id},questionId = ${question.id})}"
+                                       class="answer-action">
                                         Edit
                                     </a>
-                                    <a th:href = "@{/deleteComment/{commentId} (commentId = ${comments.id})}"
-                                       class = "answer-action">
+                                    <a th:href="@{/deleteComment/{commentId} (commentId = ${comments.id})}"
+                                       class="answer-action">
                                         Delete
                                     </a><br>
                                 </th:block>
-                            </th:block>
 
-                            <form th:if="${editComment != null and editComment eq comments.id}" th:action =
-                                    "@{/updateComment/{commentId} (commentId = ${comments.id})}" method="Post">
+                                <form th:if="${editAnswerComment != null and editAnswerComment eq comments.id}"
+                                      th:action="@{/updateAnswerComment/{commentId} (commentId = ${comments.id})}"
+                                      method="Post">
                                 <textarea name="updateContent"
-                                          th:field = "${comments.comment}" rows="10"
+                                          th:field="${comments.comment}" rows="10"
                                           style="width: 90%; margin-left: 5%;" required></textarea>
-                                <input type="hidden" th:name="questionId" th:value="${question.id}">
-                                <br>
-                                <input type="submit" value="Edit">
-                            </form>
+                                    <input type="hidden" th:name="questionId" th:value="${question.id}">
+                                    <input type="hidden" th:name="answerId" th:value="*{question.acceptedAnswer.id}">
+                                    <br>
+                                    <input type="submit" value="Edit">
+                                </form>
+                            </div>
                         </div>
                     </div>
+                    <hr>
                 </div>
             </div>
-            <hr>
 
-            <div>
-                <span th:text = "${question.answers.size()}"></span>Answer
-
-                <div th:each = "answer: ${question.answers}" th:unless = "${answer != question.acceptedAnswer}">
-                    <div th:if="${editAnswer != null && answer.id == editAnswer.id}">
-                        <div class = "question-detail">
-                            <div class = "voting">
-                            </div>
-
-                            <form th:action = "@{/updateAnswer/{questionId}/{answerId}
-                             (questionId = ${question.id}, answerId = ${question.acceptedAnswer.id})}" method="GET">
-                                <textarea th:utext="${question.acceptedAnswer.content}" name="editedContent"
-                                          th:value = "${question.acceptedAnswer.content}" rows="10"
-                                          style="width: 90%; margin-left: 5%;"></textarea>
-                                <br>
-                                <input type="file" name="imageName" accept="image/**" class="add_image">
-                                <input type="submit" value="Update">
-                            </form>
+            <div th:each="answer: ${question.answers}" th:if="${answer != question.acceptedAnswer}">
+                <div th:if="${editAnswer != null && answer.id == editAnswer.id}">
+                    <div class="question-detail">
+                        <div class="voting">
                         </div>
-                    </div>
 
-                    <div th:unless = "${editAnswer != null && question.acceptedAnswer.id == editAnswer.id}">
-                        <div class = "question-detail">
-                            <div class = "voting">
-                                <th:block th:unless="${#authentication.principal.username eq answer.user.email}">
+                        <form th:action="@{/updateAnswer/{questionId}/{answerId}
+                             (questionId = ${question.id}, answerId = *{answer.id})}" method="GET">
+                                <textarea th:utext="*{answer.content}" name="editedContent"
+                                          th:value="*{answer.content}" rows="10"
+                                          style="width: 90%; margin-left: 5%;"></textarea>
+                            <br>
+                            <input type="file" name="imageName" accept="image/**" class="add_image">
+                            <input type="submit" value="Update">
+                        </form>
+                    </div>
+                </div>
+
+                <div th:unless="${editAnswer != null && answer.id == editAnswer.id}">
+                    <div class="question-detail">
+                        <div class="voting">
+                            <th:block th:unless="${#authentication.principal.username eq answer.user.email}">
                                 <a th:href="@{'/processVote?vote=1&type=answer&questionId=' + ${question.id} +
-                                '&answerId=' + ${question.acceptedAnswer.id}}">
-                                    <span class = "voting-button">
+                                '&answerId=' + ${answer.id}}">
+                                    <span class="voting-button">
                                         <i class="fa-solid fa-caret-up"></i>
                                     </span>
                                 </a>
-                                </th:block>
-                                <span th:text = "${question.acceptedAnswer.votes}" class = "voting-count"></span>
-                                <span>Votes</span>
-                                <th:block th:unless="${#authentication.principal.username eq answer.user.email}">
+                            </th:block>
+                            <span th:text="${answer.votes}" class="voting-count"></span>
+                            <span>Votes</span>
+                            <th:block th:unless="${#authentication.principal.username eq answer.user.email}">
                                 <a th:href="@{'/processVote?vote=-1&type=answer&questionId=' + ${question.id} +
-                                '&answerId=' + ${question.acceptedAnswer.id}}">
-                                    <span class = "voting-button">
+                                '&answerId=' + ${answer.id}}">
+                                    <span class="voting-button">
                                         <i class="fa-solid fa-caret-down"></i>
                                     </span>
                                 </a>
-                                </th:block>
+                            </th:block>
+                            <th:block th:if="${#authentication.principal.username eq question.user.email}">
                                 <a th:href="@{'/acceptAnswer?questionId=' + ${question.id} +
-                                '&answerId=' + ${question.acceptedAnswer.id}}" class = "accepted-answer">
-                                    <i class="fa-solid fa-circle-check"></i>
+                                '&answerId=' + ${answer.id}}" class="accepted-answer">
+                                    <i class="fa-regular fa-circle-check"></i>
                                 </a>
+                            </th:block>
+                        </div>
+
+                        <div class="content-body">
+                            <div class="answer-content">
+                                <a class="author_box answer-author" th:href="@{'/userProfile?userId='+
+                                    ${answer.user.id}}"
+                                   style="color: black; padding-top: 5px;">
+                                    <i class="fa-solid fa-pen-clip"></i>
+                                    <span class="author_view" th:text="${answer.author}"></span>
+                                </a>
+                                <pre th:utext="*{answer.content}"></pre>
                             </div>
-
-                            <div class = "content-body">
-                                <div class = "answer-content">
-                                    <a class="author_box answer-author" th:href="@{'/userProfile?userId='+
-                                    ${question.acceptedAnswer.user.id}}"
-                                       style="color: black; padding-top: 5px;">
-                                        <i class="fa-solid fa-pen-clip"></i>
-                                        <span class="author_view" th:text="${question.acceptedAnswer.author}"></span>
-                                    </a>
-                                    <pre th:utext = "${question.acceptedAnswer.content}">
-                                    </pre>
-                                </div><br><br>
-                                <img th:if="${question.acceptedAnswer.photo != null}" th:src="'data:' + ${question.acceptedAnswer.photoType} + ';base64,'
-                                 + ${question.acceptedAnswer.photo}"
-                                     height="200px" width="200px" class="show_img">
-
-                                <th:block th:if="${#authentication.principal.username eq question.acceptedAnswer.user.email}">
-                                <a th:href = "@{/editAnswer/{questionId}/{answerId} (questionId = ${question.id},
-                                answerId = ${question.acceptedAnswer.id})}" class = "answer-action">
+                            <br><br>
+                            <img th:if="${answer.photo != null}" th:src="'data:' + ${answer.photoType} + ';base64,'
+                                 + ${answer.photo}"
+                                 height="200px" width="200px" class="show_img">
+                            <br>
+                            <th:block th:if="${#authentication.principal.username eq answer.user.email}">
+                                <a th:href="@{/editAnswer/{questionId}/{answerId} (questionId = ${question.id},
+                                answerId = *{answer.id})}" class="answer-action">
                                     Edit
                                 </a>
 
-                                <a th:href = "@{/deleteAnswer/{questionId}/{answerId} (questionId = ${question.id},
-                                answerId = ${question.acceptedAnswer.id})}" class = "answer-action">
+                                <a th:href="@{/deleteAnswer/{questionId}/{answerId} (questionId = ${question.id},
+                                answerId = *{answer.id})}" class="answer-action">
                                     Delete
                                 </a>
-                                </th:block>
-
-                                <a th:unless="${addAnswerComment != null and
-                                addAnswerComment eq question.acceptedAnswer.id}"
-                                   th:href="@{/addAnswerComment/{questionId}/{answerID}
-                                   (questionId = ${question.id},answerID=${question.acceptedAnswer.id})}"
-                                   class = "answer-action">comment</a>
-                                <form th:if="${addAnswerComment != null and addAnswerComment eq question.acceptedAnswer.id}"
-                                      th:action = "@{/saveAnswerComment}" method="Post">
-                                    Comment:
-                                    <textarea name="saveContent"
-                                              th:field = "${comments.comment}" rows="10"
-                                              style="width: 90%; margin-left: 5%;"
-                                              required></textarea>
-                                    <input type="hidden" th:name="questionId" th:value="${question.id}">
-                                    <input type="hidden" th:name="answerId" th:value="${question.acceptedAnswer.id}">
+                            </th:block>
+                            <a th:unless="*{addAnswerComment != null and addAnswerComment eq answer.id}"
+                               th:href="@{/addAnswerComment/{questionId}/{answerID}
+                                   (questionId = ${question.id},answerID=*{answer.id})}"
+                               class="answer-action">comment</a>
+                            <form th:if="*{addAnswerComment != null and addAnswerComment eq answer.id}"
+                                  th:action="@{/saveAnswerComment}" method="Post">
+                                Comment:
+                                <textarea name="saveContent"
+                                          th:field="${comments.comment}" rows="10"
+                                          style="width: 90%; margin-left: 5%;"
+                                          required></textarea>
+                                <input type="hidden" th:name="questionId" th:value="${question.id}">
+                                <input type="hidden" th:name="answerId" th:value="*{answer.id}">
+                                <br>
+                                <input type="submit" value="Comment">
+                            </form>
+                            <br><br>
+                            <div th:if="${comments != null and comments.user != null}" th:each=
+                                    "comments : *{answer.comment}" class="comment">
+                                <span th:text="*{comments.user.userName}+' : '"></span><br>
+                                <th:block th:unless="${editAnswerComment != null and editAnswerComment eq comments.id}">
+                                    <div th:utext="*{comments.comment}"></div>
                                     <br>
-                                    <input type="submit" value="Comment">
-                                </form>
-
-                                <br><br>
-                                <div th:each = "comments : ${question.acceptedAnswer.comment}" class="comment">
-                                    <span th:text = "*{comments.user.userName}"></span> :<br>
-                                    <div th:utext = "*{comments.comment}"  ></div><br>
-
-                                    <th:block th:if="${#authentication.principal.username eq comments.user.email}">
-                                        <a th:unless="${editAnswerComment != null and editAnswerComment eq comments.id}"
-                                           th:href = "@{/editAnswerComment/{commentId}/{questionId}
+                                    <th:block th:if="${#authentication.principal.username eq comments.email}">
+                                        <a th:href="@{/editAnswerComment/{commentId}/{questionId}
                                             (commentId = ${comments.id},questionId = ${question.id})}"
-                                           class = "answer-action">
+                                           class="answer-action">
                                             Edit
                                         </a>
-                                        <a th:href = "@{/deleteComment/{commentId} (commentId = ${comments.id})}"
-                                           class = "answer-action">
+                                        <a th:href="@{/deleteComment/{commentId} (commentId = ${comments.id})}"
+                                           class="answer-action">
                                             Delete
                                         </a><br>
                                     </th:block>
-
-                                    <form th:if="${editAnswerComment != null and editAnswerComment eq comments.id}"
-                                          th:action ="@{/updateAnswerComment/{commentId} (commentId = ${comments.id})}"
-                                          method="Post">
+                                </th:block>
+                                <form th:if="${editAnswerComment != null and editAnswerComment eq comments.id}"
+                                      th:action="@{/updateAnswerComment/{commentId} (commentId = ${comments.id})}"
+                                      method="Post">
                                 <textarea name="updateContent"
-                                          th:field = "${comments.comment}" rows="10"
+                                          th:field="${comments.comment}" rows="10"
                                           style="width: 90%; margin-left: 5%;" required></textarea>
-                                        <input type="hidden" th:name="questionId" th:value="${question.id}">
-                                        <input type="hidden" th:name="answerId" th:value="*{question.acceptedAnswer.id}">
-                                        <br>
-                                        <input type="submit" value="Edit">
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                        <hr>
-                    </div>
-                </div>
-
-                <div th:each = "answer: ${question.answers}" th:if = "${answer != question.acceptedAnswer}">
-                    <div th:if="${editAnswer != null && answer.id == editAnswer.id}">
-                        <div class = "question-detail">
-                            <div class = "voting">
-                            </div>
-
-                            <form th:action = "@{/updateAnswer/{questionId}/{answerId}
-                             (questionId = ${question.id}, answerId = *{answer.id})}" method="GET">
-                                <textarea th:utext="*{answer.content}" name="editedContent"
-                                          th:value = "*{answer.content}" rows="10"
-                                          style="width: 90%; margin-left: 5%;"></textarea>
-                                <br>
-                                <input type="file" name="imageName" accept="image/**" class="add_image">
-                                <input type="submit" value="Update">
-                            </form>
-                        </div>
-                    </div>
-
-                    <div th:unless = "${editAnswer != null && answer.id == editAnswer.id}">
-                        <div class = "question-detail">
-                            <div class = "voting">
-                                <th:block th:unless="${#authentication.principal.username eq answer.user.email}">
-                                <a th:href="@{'/processVote?vote=1&type=answer&questionId=' + ${question.id} +
-                                '&answerId=' + ${answer.id}}">
-                                    <span class = "voting-button">
-                                        <i class="fa-solid fa-caret-up"></i>
-                                    </span>
-                                </a>
-                                </th:block>
-                                <span th:text = "${answer.votes}" class = "voting-count"></span>
-                                <span>Votes</span>
-                                <th:block th:unless="${#authentication.principal.username eq answer.user.email}">
-                                <a th:href="@{'/processVote?vote=-1&type=answer&questionId=' + ${question.id} +
-                                '&answerId=' + ${answer.id}}">
-                                    <span class = "voting-button">
-                                        <i class="fa-solid fa-caret-down"></i>
-                                    </span>
-                                </a>
-                                </th:block>
-                                <th:block th:if="${#authentication.principal.username eq question.user.email}">
-                                <a th:href="@{'/acceptAnswer?questionId=' + ${question.id} +
-                                '&answerId=' + ${answer.id}}" class = "accepted-answer">
-                                    <i class="fa-regular fa-circle-check"></i>
-                                </a>
-                                </th:block>
-                            </div>
-
-                            <div class = "content-body">
-                                <div class = "answer-content">
-                                    <a class="author_box answer-author" th:href="@{'/userProfile?userId='+
-                                    ${answer.user.id}}"
-                                       style="color: black; padding-top: 5px;">
-                                        <i class="fa-solid fa-pen-clip"></i>
-                                        <span class="author_view" th:text="${answer.author}"></span>
-                                    </a>
-                                    <pre th:utext = "*{answer.content}"></pre>
-                                </div><br><br>
-                                <img th:if="${answer.photo != null}" th:src="'data:' + ${answer.photoType} + ';base64,'
-                                 + ${answer.photo}"
-                                     height="200px" width="200px" class="show_img">
-                                <br>
-                                <th:block th:if="${#authentication.principal.username eq answer.user.email}">
-                                <a th:href = "@{/editAnswer/{questionId}/{answerId} (questionId = ${question.id},
-                                answerId = *{answer.id})}" class = "answer-action">
-                                    Edit
-                                </a>
-
-                                <a th:href = "@{/deleteAnswer/{questionId}/{answerId} (questionId = ${question.id},
-                                answerId = *{answer.id})}" class = "answer-action">
-                                    Delete
-                                </a>
-                                </th:block>
-                                <a th:unless="*{addAnswerComment != null and addAnswerComment eq answer.id}"
-                                   th:href="@{/addAnswerComment/{questionId}/{answerID}
-                                   (questionId = ${question.id},answerID=*{answer.id})}"
-                                   class = "answer-action">comment</a>
-                                <form th:if="*{addAnswerComment != null and addAnswerComment eq answer.id}"
-                                      th:action = "@{/saveAnswerComment}" method="Post">
-                                    Comment:
-                                    <textarea name="saveContent"
-                                              th:field = "${comments.comment}" rows="10"
-                                              style="width: 90%; margin-left: 5%;"
-                                              required></textarea>
                                     <input type="hidden" th:name="questionId" th:value="${question.id}">
                                     <input type="hidden" th:name="answerId" th:value="*{answer.id}">
                                     <br>
-                                    <input type="submit" value="Comment">
+                                    <input type="submit" value="Edit">
                                 </form>
-                                <br><br>
-                                <div th:if="${comments != null and comments.user != null}" th:each =
-                                        "comments : *{answer.comment}" class="comment">
-                                    <span th:text = "*{comments.user.userName}+' : '"  ></span><br>
-                                    <th:block th:unless="${editAnswerComment != null and editAnswerComment eq comments.id}">
-                                    <div th:utext = "*{comments.comment}"  ></div><br>
-                                    <th:block th:if="${#authentication.principal.username eq comments.email}">
-                                        <a th:href = "@{/editAnswerComment/{commentId}/{questionId}
-                                            (commentId = ${comments.id},questionId = ${question.id})}"
-                                           class = "answer-action">
-                                            Edit
-                                        </a>
-                                        <a th:href = "@{/deleteComment/{commentId} (commentId = ${comments.id})}"
-                                           class = "answer-action">
-                                            Delete
-                                        </a><br>
-                                    </th:block>
-                                    </th:block>
-                                    <form th:if="${editAnswerComment != null and editAnswerComment eq comments.id}"
-                                          th:action ="@{/updateAnswerComment/{commentId} (commentId = ${comments.id})}"
-                                          method="Post">
-                                <textarea name="updateContent"
-                                          th:field = "${comments.comment}" rows="10"
-                                          style="width: 90%; margin-left: 5%;" required></textarea>
-                                        <input type="hidden" th:name="questionId" th:value="${question.id}">
-                                        <input type="hidden" th:name="answerId" th:value="*{answer.id}">
-                                        <br>
-                                        <input type="submit" value="Edit">
-                                    </form>
-                                </div>
                             </div>
                         </div>
-                        <hr>
                     </div>
+                    <hr>
                 </div>
             </div>
-            <div>
-                <p style="font-size: x-large">Your Answer</p>
-                <form th:action = "@{/addAnswer{questionId} (questionId = ${question.id})}" method="post"
-                      enctype="multipart/form-data">
-                    <textarea name = "content" rows = "10" style="width: 90%; margin-left: 5%;" required></textarea>
-                    <br><br><br>
-                    <input type="file" name="imageName" accept="image/**" class="add_image">
-                    <input type="submit" value="Post Answer">
-                </form>
-            </div>
         </div>
-        <div id="main-container">
-            <main>
-                <section class="section-container">
-                    <div class="static-content">
-                        <h3>About Stack Overflow</h3>
-                        <p>Stack Overflow is a question-and-answer website for computer programmers. It is the
-                            flagship site of the Stack Exchange Network. It was created in 2008 by Jeff Atwood and Joel
-                            Spolsky. It features questions and answers on certain computer programming topics.</p>
-                    </div>
-                    <div class="static-content">
-                        <h3>What is Programming</h3>
-                        <p>Programming is the process of creating instructions for a computer to perform tasks.
-                            It's a collaboration between humans and computers. Humans create instructions for computers
-                            to follow in a language that computers can understand.</p>
-                    </div>
-                    <div class="static-content">
-                        <h3>What is Web Development</h3>
-                        <p>Web development refers to the creating, building, and maintaining of websites. It includes
-                            aspects such as web design, web publishing, web programming, and database management. It
-                            is the creation of an application that works over the internet i.e. websites.</p>
-                    </div>
-                </section>
-            </main>
+        <div>
+            <p style="font-size: x-large">Your Answer</p>
+            <form th:action="@{/addAnswer{questionId} (questionId = ${question.id})}" method="post"
+                  enctype="multipart/form-data">
+                <textarea name="content" rows="10" style="width: 90%; margin-left: 5%;" required></textarea>
+                <br><br><br>
+                <input type="file" name="imageName" accept="image/**" class="add_image">
+                <input type="submit" value="Post Answer">
+            </form>
         </div>
     </div>
+    <div id="main-container">
+        <main>
+            <section class="section-container">
+                <div class="static-content">
+                    <h3>About Stack Overflow</h3>
+                    <p>Stack Overflow is a question-and-answer website for computer programmers. It is the
+                        flagship site of the Stack Exchange Network. It was created in 2008 by Jeff Atwood and Joel
+                        Spolsky. It features questions and answers on certain computer programming topics.</p>
+                </div>
+                <div class="static-content">
+                    <h3>What is Programming</h3>
+                    <p>Programming is the process of creating instructions for a computer to perform tasks.
+                        It's a collaboration between humans and computers. Humans create instructions for computers
+                        to follow in a language that computers can understand.</p>
+                </div>
+                <div class="static-content">
+                    <h3>What is Web Development</h3>
+                    <p>Web development refers to the creating, building, and maintaining of websites. It includes
+                        aspects such as web design, web publishing, web programming, and database management. It
+                        is the creation of an application that works over the internet i.e. websites.</p>
+                </div>
+            </section>
+        </main>
+    </div>
+</div>
 </body>
 </html>

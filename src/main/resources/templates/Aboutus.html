@@ -4,85 +4,89 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Stackoverflow</title>
-    <link rel="icon" href= "../static/css/images/stackoverflow.png" type="image/x-icon">
+    <link rel="icon" href="../static/css/images/stackoverflow.png" type="image/x-icon">
     <link rel="stylesheet" th:href="@{css/Aboutus.css}">
 </head>
 <body>
-    <nav id="navbar">
-        <a th:href="@{/}" class = "logo">
+<nav id="navbar">
+    <a th:href="@{/}" class="logo">
         <svg aria-hidden="true" class="native svg-icon iconLogoGlyphMd" width="32" height="37" viewBox="0 0 32 37">
-            <path d="M26 33v-9h4v13H0V24h4v9h22Z" fill="#BCBBBB"></path><path d="m21.5 0-2.7 2 9.9 13.3 2.7-2L21.5
+            <path d="M26 33v-9h4v13H0V24h4v9h22Z" fill="#BCBBBB"></path>
+            <path d="m21.5 0-2.7 2 9.9 13.3 2.7-2L21.5
             0ZM26 18.4 13.3 7.8l2.1-2.5 12.7 10.6-2.1 2.5ZM9.1 15.2l15 7 1.4-3-15-7-1.4 3Zm14
             10.79.68-2.95-16.1-3.35L7
-            23l16.1 2.99ZM23 30H7v-3h16v3Z" fill="#F48024"></path><span class="title">
+            23l16.1 2.99ZM23 30H7v-3h16v3Z" fill="#F48024"></path>
+            <span class="title">
             Stack<b>overflow</b>
         </span>
         </svg>
-        </a>
-        <div class="search">
-            <form th:action="@{/}">
-                <input type="search" th:name="search" id="search_bar" placeholder="Search...">
-                <button type="submit">
-                    <i class="fa-solid fa-magnifying-glass search_icon icons"></i>
-                </button>
-            </form>
-        </div>
-        <span class="profile">
+    </a>
+    <div class="search">
+        <form th:action="@{/}">
+            <input type="search" th:name="search" id="search_bar" placeholder="Search...">
+            <button type="submit">
+                <i class="fa-solid fa-magnifying-glass search_icon icons"></i>
+            </button>
+        </form>
+    </div>
+    <span class="profile">
         <img src="" alt="" id="user_pic">
     </span>
-        <ul class="items">
-            <li>
-                <a th:href="@{/userProfile}">
-                    <svg xmlns="http://www.w3.org/2000/svg" height="19" width="17" viewBox="0 0 448 512">
-                        <path d="M224 256A128 128 0 1 0 224 0a128 128 0 1 0 0 256zm-45.7 48C79.8 304 0 383.8 0 482.3C0 498.7 13.3 512 29.7 512H418.3c16.4 0 29.7-13.3 29.7-29.7C448 383.8 368.2 304 269.7 304H178.3z"/>
-                    </svg>
-                </a>
-            </li>
-            <li>
-                <a th:href="@{/achievement}">
-                    <svg aria-hidden="true" class="svg-icon iconAchievements" width="21" height="21" viewBox="0 0 18 18">
-                        <path d="M15 2V1H3v1H0v4c0 1.6 1.4 3 3 3v1c.4 1.5 3 2.6 5 3v2H5s-1 1.5-1 2h10c0-.4-1-2-1-2h-3v-2c2-.4 4.6-1.5 5-3V9c1.6-.2 3-1.4 3-3V2h-3ZM3 7c-.5 0-1-.5-1-1V4h1v3Zm8.4 2.5L9 8 6.6 9.4l1-2.7L5 5h3l1-2.7L10 5h2.8l-2.3 1.8 1 2.7h-.1ZM16 6c0 .5-.5 1-1 1V4h1v2Z"></path>
-                    </svg>
-                </a>
-            </li>
-            <li><a href=""><i class="fa-solid fa-circle-question icons"></i></a></li>
-        </ul>
-        <span id = "login-logout">
+    <ul class="items">
+        <li>
+            <a th:href="@{/userProfile}">
+                <svg xmlns="http://www.w3.org/2000/svg" height="19" width="17" viewBox="0 0 448 512">
+                    <path d="M224 256A128 128 0 1 0 224 0a128 128 0 1 0 0 256zm-45.7 48C79.8 304 0 383.8 0 482.3C0 498.7 13.3 512 29.7 512H418.3c16.4 0 29.7-13.3 29.7-29.7C448 383.8 368.2 304 269.7 304H178.3z"/>
+                </svg>
+            </a>
+        </li>
+        <li>
+            <a th:href="@{/achievement}">
+                <svg aria-hidden="true" class="svg-icon iconAchievements" width="21" height="21" viewBox="0 0 18 18">
+                    <path d="M15 2V1H3v1H0v4c0 1.6 1.4 3 3 3v1c.4 1.5 3 2.6 5 3v2H5s-1 1.5-1 2h10c0-.4-1-2-1-2h-3v-2c2-.4 4.6-1.5 5-3V9c1.6-.2 3-1.4 3-3V2h-3ZM3 7c-.5 0-1-.5-1-1V4h1v3Zm8.4 2.5L9 8 6.6 9.4l1-2.7L5 5h3l1-2.7L10 5h2.8l-2.3 1.8 1 2.7h-.1ZM16 6c0 .5-.5 1-1 1V4h1v2Z"></path>
+                </svg>
+            </a>
+        </li>
+        <li><a href=""><i class="fa-solid fa-circle-question icons"></i></a></li>
+    </ul>
+    <span id="login-logout">
             <!-- <th:block th:unless="${#authorization.expression('isAuthenticated()')}">
                  <a th:href="@{/login}">Login</a>
                  <a th:href="@{/signup}">signup</a>
             </th:block> -->
             <th:block th:if="${#authorization.expression('isAuthenticated()')}">
-                <form method="post" th:action = "@{/logout}">
+                <form method="post" th:action="@{/logout}">
                     <input id="logout" type="submit" value="Logout">
                 </form>
              </th:block>
         </span>
-    </nav>
+</nav>
 
-    <section id="hero_section" class="section">
+<section id="hero_section" class="section">
 
-        <img th:src="@{/css/images/stackoverflow.png}" alt="" srcset="" id="main_img">
-        <h1 id="title"><span id="title_first">Empowering the world to develop technology</span> <br><span id="title_secon">through collective knowledge.</span></h1>
-        <small id="descp">Our products and tools enable people to ask, share and <br><span id="secondary">learn at work or at home.</span> </small>
-        <div class="stats_container">
-            <div class="stats_box">
-                 <h6 class="stats_title">15 years</h6>
-                 <p class="stats_para">of trusted and high-quality knowledge</p>
-            </div>
-            <div class="stats_box">
-                <h6 class="stats_title">14 seconds</h6>
-                <p  class="stats_para">average time between new questions</p>
-           </div>
-           <div class="stats_box">
-                <h6 class="stats_title">58 million</h6>
-                <p  class="stats_para">total questions and answers so far</p>
-            </div>
-            <div class="stats_box">
-                <h6 class="stats_title">51 billion</h6>
-                <p  class="stats_para">times knowledge has been reused</p>
-            </div>
+    <img th:src="@{/css/images/stackoverflow.png}" alt="" srcset="" id="main_img">
+    <h1 id="title"><span id="title_first">Empowering the world to develop technology</span> <br><span id="title_secon">through collective knowledge.</span>
+    </h1>
+    <small id="descp">Our products and tools enable people to ask, share and <br><span id="secondary">learn at work or at home.</span>
+    </small>
+    <div class="stats_container">
+        <div class="stats_box">
+            <h6 class="stats_title">15 years</h6>
+            <p class="stats_para">of trusted and high-quality knowledge</p>
         </div>
-    </section>
+        <div class="stats_box">
+            <h6 class="stats_title">14 seconds</h6>
+            <p class="stats_para">average time between new questions</p>
+        </div>
+        <div class="stats_box">
+            <h6 class="stats_title">58 million</h6>
+            <p class="stats_para">total questions and answers so far</p>
+        </div>
+        <div class="stats_box">
+            <h6 class="stats_title">51 billion</h6>
+            <p class="stats_para">times knowledge has been reused</p>
+        </div>
+    </div>
+</section>
 </body>
 </html>

@@ -33,16 +33,16 @@ public class Question {
     @Column(name = "author")
     private String author;
 
-    @Column(name = "content",columnDefinition = "TEXT")
-    private  String content;
+    @Column(name = "content", columnDefinition = "TEXT")
+    private String content;
 
     @Column(name = "photo")
     private String photo = null;
 
     @Column(name = "views")
-    private int views =0 ;
+    private int views = 0;
 
-    @Column(name = "created_at",updatable = false)
+    @Column(name = "created_at", updatable = false)
     @CreationTimestamp
     private Date createdAt;
 
@@ -54,33 +54,35 @@ public class Question {
     private int votes = 0;
     @OneToOne
     private Answer acceptedAnswer;
-    @OneToMany(cascade = CascadeType.ALL,mappedBy = "question")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "question")
     //in answers there should be private Question question; with joinColumn("foreign_key")
     private List<Answer> answers;
 
-    @ManyToMany(cascade = {CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH}
-                , fetch = FetchType.EAGER)
-    @JoinTable(name="question_tag",
+    @ManyToMany(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH}
+            , fetch = FetchType.EAGER)
+    @JoinTable(name = "question_tag",
             joinColumns = @JoinColumn(name = "question_id"),
             inverseJoinColumns = @JoinColumn(name = "tag_id"))
     private List<Tag> tags;
 
-    @OneToMany(cascade = CascadeType.ALL,mappedBy = "question")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "question")
     private List<Comment> comments;
 
-    @ManyToOne(cascade = {CascadeType.REFRESH,CascadeType.PERSIST,CascadeType.MERGE,CascadeType.DETACH})
+    @ManyToOne(cascade = {CascadeType.REFRESH, CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH})
     private User user;
 
     @ManyToMany()
     @JoinTable(
             name = "saved_question_user",
             joinColumns = @JoinColumn(name = "saved_question_id"), // field from current class
-            inverseJoinColumns=@JoinColumn(name = "saved_user_id") // field from other class
+            inverseJoinColumns = @JoinColumn(name = "saved_user_id") // field from other class
     )
     private List<User> savedUsers;
 
 
-    public Question(){}
+    public Question() {
+    }
+
     public Question(String title, String content) {
         this.title = title;
         this.content = content;
@@ -178,16 +180,16 @@ public class Question {
         return author;
     }
 
+    public void setAuthor(String author) {
+        this.author = author;
+    }
+
     public Answer getAnswer() {
         return acceptedAnswer;
     }
 
     public void setAnswer(Answer acceptedAnswer) {
         this.acceptedAnswer = acceptedAnswer;
-    }
-
-    public void setAuthor(String author) {
-        this.author = author;
     }
 
     public User getUser() {
@@ -214,27 +216,28 @@ public class Question {
         this.savedUsers = savedUsers;
     }
 
-    public void addTags(Tag tag){
-        if(tags == null)
+    public void addTags(Tag tag) {
+        if (tags == null)
             tags = new ArrayList<>();
         tags.add(tag);
     }
-    public void addComment(Comment comment){
-        if(comments==null){
-            comments=new ArrayList<>();
+
+    public void addComment(Comment comment) {
+        if (comments == null) {
+            comments = new ArrayList<>();
         }
         comments.add(comment);
         comment.setQuestion(this);
     }
 
-    public void addSavedUser(User user){
-        if(savedUsers == null)
+    public void addSavedUser(User user) {
+        if (savedUsers == null)
             savedUsers = new ArrayList<>();
         savedUsers.add(user);
     }
 
-    public void removedSavedUser(User user){
-        if(savedUsers.contains(user)){
+    public void removedSavedUser(User user) {
+        if (savedUsers.contains(user)) {
             savedUsers.remove(user);
         }
     }

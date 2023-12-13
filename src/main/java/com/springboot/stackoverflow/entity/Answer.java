@@ -14,7 +14,7 @@ import java.util.List;
 public class Answer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="id")
+    @Column(name = "id")
     private Integer id;
     @Column(name = "photoName")
     private String photoName;
@@ -30,11 +30,11 @@ public class Answer {
 
     @Column(name = "author")
     private String author;
-    @Column(name = "content",columnDefinition = "TEXT")
+    @Column(name = "content", columnDefinition = "TEXT")
     private String content;
-    @OneToMany(cascade = CascadeType.ALL,mappedBy = "answer")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "answer")
     private List<Comment> comment;
-    @ManyToOne(cascade = {CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH})
+    @ManyToOne(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
     @JoinColumn(name = "question_id")
     private Question question;
     @Column(name = "photo")
@@ -55,7 +55,8 @@ public class Answer {
     @Column(name = "updated_at")
     private Date updatedAt;
 
-    public Answer(){}
+    public Answer() {
+    }
 
     public Answer(String content, Question question, User user) {
         this.content = content;
@@ -82,30 +83,39 @@ public class Answer {
     public Integer getId() {
         return id;
     }
+
     public void setId(Integer id) {
         this.id = id;
     }
+
     public String getContent() {
         return content;
     }
+
     public void setContent(String content) {
         this.content = content;
     }
+
     public Question getQuestion() {
         return question;
     }
+
     public void setQuestion(Question question) {
         this.question = question;
     }
+
     public User getUser() {
         return user;
     }
+
     public void setUser(User user) {
         this.user = user;
     }
+
     public int getVotes() {
         return votes;
     }
+
     public void setVotes(int votes) {
         this.votes = votes;
     }

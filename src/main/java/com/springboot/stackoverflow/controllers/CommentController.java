@@ -30,87 +30,88 @@ public class CommentController {
     }
 
     @GetMapping("/addComment/{questionId}")
-    public String addComment(@PathVariable("questionId") int questionId, Model model){
+    public String addComment(@PathVariable("questionId") int questionId, Model model) {
         Question question = questionService.findQuestionById(questionId);
-        model.addAttribute("comments",new Comment());
-        model.addAttribute("addComment","true");
-        if(question == null) return "error";
+        model.addAttribute("comments", new Comment());
+        model.addAttribute("addComment", "true");
+        if (question == null) return "error";
         model.addAttribute("question", question);
         return "questionPage";
     }
 
     @PostMapping("/saveComment")
-    public String saveComment(@ModelAttribute("comments") Comment comments,@RequestParam("questionId") int questionId){
-        commentService.saveComment(comments,questionId);
+    public String saveComment(@ModelAttribute("comments") Comment comments, @RequestParam("questionId") int questionId) {
+        commentService.saveComment(comments, questionId);
 
-        return "redirect:/viewQuestion/"+questionId;
+        return "redirect:/viewQuestion/" + questionId;
     }
 
     @GetMapping("/addAnswerComment/{questionId}/{answerID}")
     public String addAnswerComment(@PathVariable("questionId") int questionId,
-                                   @PathVariable("answerID") int answerID, Model model){
+                                   @PathVariable("answerID") int answerID, Model model) {
         Question question = questionService.findQuestionById(questionId);
-        model.addAttribute("comments",new Comment());
-        model.addAttribute("addAnswerComment",answerID);
-        if(question == null) return "error";
+        model.addAttribute("comments", new Comment());
+        model.addAttribute("addAnswerComment", answerID);
+        if (question == null) return "error";
         model.addAttribute("question", question);
         return "questionPage";
     }
 
     @PostMapping("/saveAnswerComment")
     public String saveAnswerComment(@ModelAttribute("comments") Comment comments,
-                                    @RequestParam("answerId") int answerId,@RequestParam("questionId") int questionId){
-        commentService.saveAnswerComment(comments,answerId);
+                                    @RequestParam("answerId") int answerId, @RequestParam("questionId") int questionId) {
+        commentService.saveAnswerComment(comments, answerId);
 
-        return "redirect:/viewQuestion/"+questionId;
+        return "redirect:/viewQuestion/" + questionId;
     }
 
     @GetMapping("/deleteComment/{commentId}")
-    public String deleteComment(@PathVariable("commentId") int commentId){
+    public String deleteComment(@PathVariable("commentId") int commentId) {
 
-      int questionId =  commentService.deleteCommentById(commentId);
+        int questionId = commentService.deleteCommentById(commentId);
 
-        return "redirect:/viewQuestion/"+ questionId;
+        return "redirect:/viewQuestion/" + questionId;
     }
+
     @GetMapping("/editComment/{commentId}")
-    public String editComment(@PathVariable("commentId") int commentId,Model model){
+    public String editComment(@PathVariable("commentId") int commentId, Model model) {
 
         Comment comment = commentService.findById(commentId);
         Question question = comment.getQuestion();
 
         model.addAttribute("comments", comment);
-        model.addAttribute("editComment",commentId);
-        if(question == null) return "error";
+        model.addAttribute("editComment", commentId);
+        if (question == null) return "error";
         model.addAttribute("question", question);
         return "questionPage";
     }
 
     @GetMapping("/editAnswerComment/{commentId}/{questionId}")
     public String editAnswerComment(@PathVariable("commentId") int commentId,
-                                    @PathVariable("questionId") int questionId,Model model){
+                                    @PathVariable("questionId") int questionId, Model model) {
 
         Comment comment = commentService.findById(commentId);
         Question question = questionService.findQuestionById(questionId);
 
         model.addAttribute("comments", comment);
-        model.addAttribute("editAnswerComment",commentId);
-        if(question == null) return "error";
+        model.addAttribute("editAnswerComment", commentId);
+        if (question == null) return "error";
         model.addAttribute("question", question);
         return "questionPage";
     }
 
     @PostMapping("/updateComment/{commentId}")
     public String updateComment(@ModelAttribute("comments") Comment comments,
-                                @RequestParam("questionId") int questionId,@PathVariable("commentId") int commentId){
-        commentService.update(comments,commentId);
-        return "redirect:/viewQuestion/"+questionId;
+                                @RequestParam("questionId") int questionId, @PathVariable("commentId") int commentId) {
+        commentService.update(comments, commentId);
+        return "redirect:/viewQuestion/" + questionId;
     }
 
     @PostMapping("/updateAnswerComment/{commentId}")
     public String updateAnswerComment(@ModelAttribute("comments") Comment comments,
                                       @RequestParam("questionId") int questionId,
-                                      @PathVariable("commentId") int commentId){
-        commentService.updateCommentOfAnswer(comments,commentId);
-        return "redirect:/viewQuestion/"+questionId;
+                                      @PathVariable("commentId") int commentId) {
+        commentService.updateCommentOfAnswer(comments, commentId);
+        return "redirect:/viewQuestion/" + questionId;
     }
 }

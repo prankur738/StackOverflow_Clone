@@ -32,7 +32,7 @@ public class UserController {
     private QuestionService questionService;
 
     @Autowired
-    public UserController(UserService userService,QuestionService questionService) {
+    public UserController(UserService userService, QuestionService questionService) {
         this.userService = userService;
         this.questionService = questionService;
     }
@@ -67,7 +67,7 @@ public class UserController {
     public String userProfile(Model model, @RequestParam(value = "userId", required = false) Integer userId) throws IOException {
         User user = userService.findUserByUserId(userId);
 
-        if(user.getPhotoName() != null) {
+        if (user.getPhotoName() != null) {
             System.out.println("in profile");
             String fileName = user.getPhotoName();
             // Download file from Firebase Storage
@@ -83,7 +83,6 @@ public class UserController {
         }
 
 
-
         model.addAttribute("user", user);
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         model.addAttribute("loggedUser", userService.findByEmail(authentication.getName()));
@@ -96,8 +95,8 @@ public class UserController {
         List<User> users = null;
         users = userService.findAllUsers();
 
-        for(User user:users){
-            if(user.getPhotoName() != null) {
+        for (User user : users) {
+            if (user.getPhotoName() != null) {
                 String fileName = user.getPhotoName();
                 // Download file from Firebase Storage
                 Credentials credentials = GoogleCredentials.fromStream(new FileInputStream("./serviceAccountKey.json"));
@@ -120,9 +119,9 @@ public class UserController {
 
     @GetMapping("/editProfile")
     public String editProfile(Model model) throws IOException {
-        User user=userService.editUser();
+        User user = userService.editUser();
 
-        if(user.getPhotoName() != null) {
+        if (user.getPhotoName() != null) {
             String fileName = user.getPhotoName();
             // Download file from Firebase Storage
             Credentials credentials = GoogleCredentials.fromStream(new FileInputStream("./serviceAccountKey.json"));
@@ -143,17 +142,18 @@ public class UserController {
     }
 
     @GetMapping("/users/saves")
-    public String processBookmarkQuestions(Model model){
+    public String processBookmarkQuestions(Model model) {
         List<Question> bookmarkQuestions = userService.getBookmarkQuestionsByUser();
 
-        model.addAttribute("questions",bookmarkQuestions);
+        model.addAttribute("questions", bookmarkQuestions);
         return "BookmarkQuestion";
 
     }
+
     @PostMapping("/updateProfile")
-    public String updateProfile( @RequestParam String userName,
-                                 @RequestParam String country,@RequestParam String title,
-                                 @RequestParam String about){
+    public String updateProfile(@RequestParam String userName,
+                                @RequestParam String country, @RequestParam String title,
+                                @RequestParam String about) {
         userService.updateUser(userName, country, title, about);
         return "redirect:/userProfile";
     }
@@ -168,7 +168,7 @@ public class UserController {
 
     @GetMapping("/unfollow")
     public String unfollow(@RequestParam("follower") String follower,
-                         @RequestParam("following") String following) {
+                           @RequestParam("following") String following) {
         userService.unfollow(follower, following);
 
         return "redirect:/userProfile?userId=" + userService.findByEmail(following).getId();
@@ -191,18 +191,19 @@ public class UserController {
 
         return "follow";
     }
+
     @PostMapping("/saveProfilePic{userId}")
     public String saveProfilePic(@RequestParam("imageName") MultipartFile file,
-                                 @PathVariable(value = "userId")int userId) throws IOException {
-        userService.saveProfilePic(file,userId);
+                                 @PathVariable(value = "userId") int userId) throws IOException {
+        userService.saveProfilePic(file, userId);
         return "redirect:/editProfile";
     }
 
     @GetMapping("/searchUser")
-    public String searchUser(@RequestParam(value = "search" , required = false) String search,Model model) throws IOException {
+    public String searchUser(@RequestParam(value = "search", required = false) String search, Model model) throws IOException {
         List<User> users = userService.searchUser(search);
-        for(User user:users){
-            if(user.getPhotoName() != null) {
+        for (User user : users) {
+            if (user.getPhotoName() != null) {
                 String fileName = user.getPhotoName();
                 // Download file from Firebase Storage
                 Credentials credentials = GoogleCredentials.fromStream(new FileInputStream("./serviceAccountKey.json"));
@@ -216,7 +217,7 @@ public class UserController {
                 user.setPhoto(base64Image);
             }
         }
-        model.addAttribute("users",users);
+        model.addAttribute("users", users);
         return "Users";
     }
 }

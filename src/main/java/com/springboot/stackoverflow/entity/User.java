@@ -38,9 +38,9 @@ public class User {
     @Column(name = "created_at")
     @CreationTimestamp
     private Date createdAt;
-    @Column(name="country")
+    @Column(name = "country")
     private String country = "NA";
-    @Column(name="title")
+    @Column(name = "title")
     private String title;
     @Column(name = "is_active")
     private boolean isActive = true;
@@ -51,21 +51,21 @@ public class User {
     @JoinTable(
             name = "FollowRelation",
             joinColumns = @JoinColumn(name = "follower_id"), // field from current class
-            inverseJoinColumns=@JoinColumn(name = "following_id") // field from other class
+            inverseJoinColumns = @JoinColumn(name = "following_id") // field from other class
     )
     private List<User> followings;
     @ManyToMany()
     @JoinTable(
             name = "FollowRelation",
             joinColumns = @JoinColumn(name = "following_id"), // field from current class
-            inverseJoinColumns=@JoinColumn(name = "follower_id") // field from other class
+            inverseJoinColumns = @JoinColumn(name = "follower_id") // field from other class
     )
     private List<User> followers;
     @ManyToMany()
     @JoinTable(
             name = "saved_question_user",
             joinColumns = @JoinColumn(name = "saved_user_id"), // field from current class
-            inverseJoinColumns=@JoinColumn(name = "saved_question_id") // field from other class
+            inverseJoinColumns = @JoinColumn(name = "saved_question_id") // field from other class
     )
     private List<Question> savedQuestions;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
@@ -76,7 +76,7 @@ public class User {
     @ManyToMany
     @JoinTable(name = "user_badge",
             joinColumns = @JoinColumn(name = "user_id"),
-            inverseJoinColumns =@JoinColumn(name ="badge_id")
+            inverseJoinColumns = @JoinColumn(name = "badge_id")
     )
     private List<Badge> userBadges;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
@@ -89,7 +89,8 @@ public class User {
             inverseJoinColumns = @JoinColumn(name = "role_id"))
     private List<Role> role;
 
-    public User() {}
+    public User() {
+    }
 
     public User(String userName, String email,
                 String password) {
@@ -302,7 +303,7 @@ public class User {
     }
 
     public void addFollower(User theUser) {
-        if(followers == null) {
+        if (followers == null) {
             followers = new ArrayList<>();
         }
 
@@ -310,7 +311,7 @@ public class User {
     }
 
     public void addFollowing(User theUser) {
-        if(followings == null) {
+        if (followings == null) {
             followings = new ArrayList<>();
         }
 
@@ -318,7 +319,7 @@ public class User {
     }
 
     public void addComment(Comment theComment) {
-        if(commentList == null) {
+        if (commentList == null) {
             commentList = new ArrayList<>();
         }
 
@@ -327,7 +328,7 @@ public class User {
     }
 
     public void addAnswer(Answer theAnswer) {
-        if(answerList == null) {
+        if (answerList == null) {
             answerList = new ArrayList<>();
         }
 
@@ -335,7 +336,7 @@ public class User {
     }
 
     public void addBadges(Badge theBadge) {
-        if(userBadges == null) {
+        if (userBadges == null) {
             userBadges = new ArrayList<>();
         }
 
@@ -343,7 +344,7 @@ public class User {
     }
 
     public void addQuestion(Question theQuestion) {
-        if(userQuestions == null) {
+        if (userQuestions == null) {
             userQuestions = new ArrayList<>();
         }
 
@@ -351,7 +352,7 @@ public class User {
     }
 
     public void addRole(Role theRole) {
-        if(role == null) {
+        if (role == null) {
             role = new ArrayList<>();
         }
 
@@ -359,7 +360,7 @@ public class User {
     }
 
     public void addVote(Vote theVote) {
-        if(userVotes == null) {
+        if (userVotes == null) {
             userVotes = new ArrayList<>();
         }
 

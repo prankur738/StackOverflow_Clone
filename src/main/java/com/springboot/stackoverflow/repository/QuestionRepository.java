@@ -10,7 +10,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface QuestionRepository extends JpaRepository<Question,Integer> {
+public interface QuestionRepository extends JpaRepository<Question, Integer> {
     @Query("""
             SELECT q FROM Question q
             WHERE (LOWER(q.title) LIKE LOWER(CONCAT('%', :search, '%'))

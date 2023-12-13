@@ -28,9 +28,9 @@ public class HomeController {
                            @RequestParam(name = "pageLimit", defaultValue = "5") int pageLimit) {
         Page<Question> questionsList;
         if (search != null && !search.isEmpty()) {
-            questionsList = questionService.searchProducts(search, pageNumber-1, pageLimit);
+            questionsList = questionService.searchProducts(search, pageNumber - 1, pageLimit);
         } else {
-            questionsList = questionService.findAllQuestions(pageNumber-1, pageLimit);
+            questionsList = questionService.findAllQuestions(pageNumber - 1, pageLimit);
         }
         model.addAttribute("questionsList", questionsList.getContent());
 

@@ -27,18 +27,18 @@ public class AnswerController {
 
     @PostMapping("/addAnswer{questionId}")
     public String processAddAnswer(@RequestParam("imageName") MultipartFile file,
-                                   @PathVariable(name = "questionId")Integer questionId,
+                                   @PathVariable(name = "questionId") Integer questionId,
                                    @RequestParam("content") String content) throws IOException {
 
 
-        answerService.addAnswer(questionId,content,file);
+        answerService.addAnswer(questionId, content, file);
 
         return "redirect:/viewQuestion/{questionId}";
     }
 
     @GetMapping("/editAnswer/{questionId}/{answerId}")
-    public String processEditAnswer(@PathVariable(name = "answerId")Integer answerId,
-                                    @PathVariable(name = "questionId") Integer questionId, Model model){
+    public String processEditAnswer(@PathVariable(name = "answerId") Integer answerId,
+                                    @PathVariable(name = "questionId") Integer questionId, Model model) {
         Answer tempAnswer = answerService.editAnswer(answerId);
         Question question = questionService.findQuestionById(questionId);
         model.addAttribute("question", question);
@@ -48,15 +48,15 @@ public class AnswerController {
     }
 
     @GetMapping("/updateAnswer/{questionId}/{answerId}")
-    public String processUpdatedAnswer(@ModelAttribute("editedContent")String editedContent,
-                                       @PathVariable(name = "answerId")Integer answerId){
+    public String processUpdatedAnswer(@ModelAttribute("editedContent") String editedContent,
+                                       @PathVariable(name = "answerId") Integer answerId) {
         answerService.updateAnswer(editedContent, answerId);
 
         return "redirect:/viewQuestion/{questionId}";
     }
 
     @GetMapping("/deleteAnswer/{questionId}/{answerId}")
-    public String processDeleteAnswer(@PathVariable Integer answerId){
+    public String processDeleteAnswer(@PathVariable Integer answerId) {
         answerService.deleteAnswer(answerId);
 
         return "redirect:/viewQuestion/{questionId}";
