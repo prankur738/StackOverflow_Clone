@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.util.Comparator;
 import java.util.List;
 
 @Controller
@@ -49,9 +50,17 @@ public class TagController {
     }
 
     @GetMapping("/questions/tagged/{tagId}")
-    public String processAllQuestions(@PathVariable(name = "tagId") int tagId, Model model) {
-        List<Question> tempQuestions = tagService.findAllQuestionsByTag(tagId);
-        model.addAttribute("questions", tempQuestions);
+    public String processAllQuestions(@PathVariable(name = "tagId") int tagId,
+                                      @RequestParam(name = "sortField", defaultValue = "popular") String sortField,
+                                      Model model) {
+        List<Question> questions = tagService.findAllQuestionsByTag(tagId);
+        switch (sortField) {
+            case "popular" -> questions.sort(Comparator.comparing(Question::getViews).reversed());
+            case "name" -> questions.sort(Comparator.comparing(Question::getTitle));
+            case "new" -> questions.sort(Comparator.comparing(Question::getCreatedAt));
+        }
+
+        model.addAttribute("questions", questions);
         return "QuestionsTagged";
     }
 

@@ -131,10 +131,15 @@
                  th:text="${questions.size() > 1 ? questions.size() + ' questions' : questions.size() + ' question'}">
             </div>
             <ul class="sort_items">
-                <li class="sort_item"><a
-                >Popular</a></li>
-                <li class="sort_item"><a href="/tag">Name</a></li>
-                <li class="sort_item"><a href="/tag">new</a></li>
+                <li class="sort_item">
+                    <a th:href="@{|/questions/tagged/${tagId}?sortField=popular|}">Popular</a>
+                </li>
+                <li class="sort_item">
+                    <a th:href="@{|/questions/tagged/${tagId}?sortField=name|}">Name</a>
+                </li>
+                <li class="sort_item">
+                    <a th:href="@{|/questions/tagged/${tagId}?sortField=new|}">New</a>
+                </li>
             </ul>
         </div>
         <div class="question_container" th:each="question : ${questions}" th:if="${question != null}">

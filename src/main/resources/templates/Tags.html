@@ -119,13 +119,13 @@
             </form>
             <ul class="sort_items">
                 <li class="sort_item"><a
-                        th:href="@{|/tags?page=${currentPage}&limit=8&sortField=popular&sortDir=${reverseSortDir}&search=${search}|}"
+                        th:href="@{/tags(page=${currentPage},sortField=popular,sortDir=${reverseSortDir},search=${search})}"
                 >Popular</a></li>
                 <li class="sort_item"><a
-                        th:href="@{|/tags?page=${currentPage}&limit=8&sortField=popular&sortDir=${reverseSortDir}&search=${search}|}"
+                        th:href="@{/tags(page=${currentPage},sortField=name,sortDir=${reverseSortDir},search=${search})}"
                 >Name</a></li>
                 <li class="sort_item"><a
-                        th:href="@{|/tags?page=${currentPage}&limit=8&sortField=popular&sortDir=${reverseSortDir}&search=${search}|}"
+                        th:href="@{/tags(page=${currentPage},sortField=new,sortDir=${reverseSortDir},search=${search})}"
                 >new</a></li>
             </ul>
         </div>
