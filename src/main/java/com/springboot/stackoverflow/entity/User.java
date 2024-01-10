@@ -1,6 +1,9 @@
 package com.springboot.stackoverflow.entity;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 import org.hibernate.annotations.CreationTimestamp;
 
 import java.util.ArrayList;
@@ -25,10 +28,17 @@ public class User {
 
     @Column(name = "photoSize")
     private Long photoSize;
+
+    @NotBlank(message = "Username Cannot be null")
+    @Size(min = 3,max = 15 ,message = "Username must be between 3 - 15 characters")
     @Column(name = "username")
     private String userName;
+
+    @NotBlank(message = "email cannot be empty")
     @Column(name = "email")
     private String email;
+
+    @NotBlank(message = "Password cannot be empty")
     @Column(name = "password")
     private String password;
     @Column(name = "reputation")

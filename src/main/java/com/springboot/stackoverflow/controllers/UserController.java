@@ -15,9 +15,11 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.validation.Valid;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -49,11 +51,13 @@ public class UserController {
     }
 
     @GetMapping("/processUser")
-    public String processUser(@ModelAttribute("username") String userName,
-                              @ModelAttribute("email") String email,
-                              @ModelAttribute("password") String password,
-                              @ModelAttribute("confirm-password") String confirmPassword) {
+    public String processUser(@Valid @ModelAttribute("username") String userName, BindingResult result,
+                              @Valid @ModelAttribute("email") String email,BindingResult result2,
+                              @Valid @ModelAttribute("password") String password,BindingResult result3,
+                              @Valid @ModelAttribute("confirm-password") String confirmPassword ) {
         String response = userService.processUser(userName, email, password, confirmPassword);
+
+
 
         if (response.equals("errorPassword"))
             return "redirect:/signup?errorPassword";
